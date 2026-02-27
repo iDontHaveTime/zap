@@ -29,7 +29,11 @@ var NAVTREE =
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
-        [ "Enumerations", "namespacemembers_enum.html", null ]
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ],
+        [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -39,7 +43,9 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", "functions_vars" ]
+        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Related Symbols", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -58,12 +64,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d2/ddf/classzir_1_1CondBranchInst.html#a84da0bd750ac3da0c60c81b0e692c412",
-"d4/da0/classzir_1_1BoundIRGenerator.html#a90aec8c572fe1ccc5641b0322f83515f",
-"d9/dd2/classzir_1_1Type.html#abe32a959bde0e2bc5435294cae74fbfc",
-"db/dee/classzir_1_1GetElementPtrInst.html#ae3fb0055ef3fc740ee542b076b1570fa",
-"de/d56/classAstBuilder.html#adc49af93510eb83a2e28e7e145864c97",
-"functions_func_s.html"
+"d2/dd4/namespacezap_1_1opts.html#afe2b5287613dcdc8978daa4404808eab",
+"d4/da0/classzir_1_1BoundIRGenerator.html#a00cbfd798d2a6a3ac73bbea84dda5533",
+"d8/dd5/classIfNode.html",
+"da/de9/classcodegen_1_1LLVMCodeGen.html#a2a88bf58ead7a9f512c904908d6bd226",
+"dc/d2c/classsema_1_1Binder.html#afc0ea927c024a812691148244b9d7239",
+"df/d35/namespacezir.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

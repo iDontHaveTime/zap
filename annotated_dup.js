@@ -36,6 +36,11 @@ var annotated_dup =
       [ "SymbolTable", "da/d74/classsema_1_1SymbolTable.html", "da/d74/classsema_1_1SymbolTable" ]
     ] ],
     [ "zap", "d7/d1a/namespacezap.html", [
+      [ "opts", "d2/dd4/namespacezap_1_1opts.html", [
+        [ "ZapcOptTable", "dd/d41/classzap_1_1opts_1_1ZapcOptTable.html", "dd/d41/classzap_1_1opts_1_1ZapcOptTable" ]
+      ] ],
+      [ "driver", "d9/d00/classzap_1_1driver.html", "d9/d00/classzap_1_1driver" ],
+      [ "_version_base", "d3/dfd/classzap_1_1__version__base.html", "d3/dfd/classzap_1_1__version__base" ],
       [ "Parser", "de/d73/classzap_1_1Parser.html", "de/d73/classzap_1_1Parser" ],
       [ "DiagnosticEngine", "d3/d28/classzap_1_1DiagnosticEngine.html", "d3/d28/classzap_1_1DiagnosticEngine" ]
     ] ],

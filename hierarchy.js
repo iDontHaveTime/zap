@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "zap::_version_base&lt; T &gt;", "d3/dfd/classzap_1_1__version__base.html", null ],
     [ "Argument", "dc/d8f/structArgument.html", null ],
     [ "AstBuilder", "de/d56/classAstBuilder.html", null ],
     [ "zir::BasicBlock", "d7/d6e/classzir_1_1BasicBlock.html", null ],
@@ -35,8 +36,12 @@ var hierarchy =
       [ "zir::BoundIRGenerator", "d4/da0/classzir_1_1BoundIRGenerator.html", null ]
     ] ],
     [ "zap::DiagnosticEngine", "d3/d28/classzap_1_1DiagnosticEngine.html", null ],
+    [ "zap::driver", "d9/d00/classzap_1_1driver.html", null ],
     [ "zir::RecordType::Field", "d3/dc7/structzir_1_1RecordType_1_1Field.html", null ],
     [ "zir::Function", "dc/d90/classzir_1_1Function.html", null ],
+    [ "llvm::opt::GenericOptTable", null, [
+      [ "zap::opts::ZapcOptTable", "dd/d41/classzap_1_1opts_1_1ZapcOptTable.html", null ]
+    ] ],
     [ "zir::Instruction", "d0/dad/classzir_1_1Instruction.html", [
       [ "zir::AllocInst", "d1/dc3/classzir_1_1AllocInst.html", null ],
       [ "zir::AllocaInst", "d2/d4b/classzir_1_1AllocaInst.html", null ],

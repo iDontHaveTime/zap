@@ -64,13 +64,34 @@ $(function(){initNavTree('d7/d1a/namespacezap.html','../../',''); });
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:opts" id="r_opts"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dd4/namespacezap_1_1opts.html">opts</a></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:driver" id="r_driver"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/classzap_1_1driver.html">driver</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The class that drives the argument parsing. Order of the functions that should be called is by how they are defined here in the header. Meaning that first is <a class="el" href="../../d9/d00/classzap_1_1driver.html#a812ecc0e86c32959aeb36d7fba6b1f8a" title="Parses the provided args.">parseArgs(int, char**)</a>, second is <a class="el" href="../../d9/d00/classzap_1_1driver.html#a7cbb3a0fafc3b27961c50b8429476b25" title="Splits inputs based on their file extension.">splitInputs()</a>, third is <a class="el" href="../../d9/d00/classzap_1_1driver.html#a6cbbb308dba62d35d49909a4abdee7f3" title="Checks if the output is valid or not.">verifyOutput()</a>, then <a class="el" href="../../d9/d00/classzap_1_1driver.html#a8e686ffc0b6e51da2d602c366b416997" title="Compiles the files to the chosen output mode.">compile()</a>. Most functions return true on <em>error</em> not on success. It returns error due to easy checks like if(verifyOutput()) return 1;.  <a href="../../d9/d00/classzap_1_1driver.html#details">More...</a><br /></td></tr>
+<tr class="memitem:_5Fversion_5Fbase" id="r__5Fversion_5Fbase"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dfd/classzap_1_1__version__base.html">_version_base</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for the version.  <a href="../../d3/dfd/classzap_1_1__version__base.html#details">More...</a><br /></td></tr>
 <tr class="memitem:Parser" id="r_Parser"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d73/classzap_1_1Parser.html">Parser</a></td></tr>
 <tr class="memitem:DiagnosticEngine" id="r_DiagnosticEngine"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d28/classzap_1_1DiagnosticEngine.html">DiagnosticEngine</a></td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a0acdcff1050bab4113419710c3284caa" id="r_a0acdcff1050bab4113419710c3284caa"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0acdcff1050bab4113419710c3284caa">version</a> = <a class="el" href="../../d3/dfd/classzap_1_1__version__base.html">_version_base</a>&lt;uint16_t&gt;</td></tr>
+<tr class="memdesc:a0acdcff1050bab4113419710c3284caa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Can be changed to any integer or float type.  <br /></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:a5d4f3f0e308df81e61d968261b64533c" id="r_a5d4f3f0e308df81e61d968261b64533c"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d4f3f0e308df81e61d968261b64533c">ColorState</a> : uint8_t { <br />
+&#160;&#160;<a class="el" href="#a5d4f3f0e308df81e61d968261b64533ca6adf97f83acf6453d4a6a4b1070f3754">None</a>
+, <br />
+&#160;&#160;<a class="el" href="#a5d4f3f0e308df81e61d968261b64533ca78945de8de090e90045d299651a68a9b">Available</a>
+, <br />
+&#160;&#160;<a class="el" href="#a5d4f3f0e308df81e61d968261b64533ca453e6aa38d87b28ccae545967c53004f">Unavailable</a>
+<br />
+ }</td></tr>
 <tr class="memitem:a13ae6a43c2e5be75cc58a93a966b62a2" id="r_a13ae6a43c2e5be75cc58a93a966b62a2"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13ae6a43c2e5be75cc58a93a966b62a2">DiagnosticLevel</a> { <br />
 &#160;&#160;<a class="el" href="#a13ae6a43c2e5be75cc58a93a966b62a2a3b0649c72650c313a357338dcdfb64ec">Note</a>
 , <br />
@@ -79,8 +100,74 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="#a13ae6a43c2e5be75cc58a93a966b62a2a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>
 <br />
  }</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a6cbfdaf9a7926dea836b51b2a3237e7e" id="r_a6cbfdaf9a7926dea836b51b2a3237e7e"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="#a0acdcff1050bab4113419710c3284caa">version</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6cbfdaf9a7926dea836b51b2a3237e7e">ZAP_VERSION</a> (0, 1, 0)</td></tr>
+<tr class="memdesc:a6cbfdaf9a7926dea836b51b2a3237e7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zap's version, displayed when &ndash;version is used.  <br /></td></tr>
+<tr class="memitem:a11aadfb1fe305b0f1b6b1a81757d1fb1" id="r_a11aadfb1fe305b0f1b6b1a81757d1fb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11aadfb1fe305b0f1b6b1a81757d1fb1">print_red</a> (llvm::StringRef msg)</td></tr>
+<tr class="memitem:a2a6e0e7719e15570ecf3fccf40924d36" id="r_a2a6e0e7719e15570ecf3fccf40924d36"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a6e0e7719e15570ecf3fccf40924d36">verifyFile</a> (const std::filesystem::path &amp;input)</td></tr>
+<tr class="memitem:abb82e4d00eb14c0b423cfdc842e054d9" id="r_abb82e4d00eb14c0b423cfdc842e054d9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb82e4d00eb14c0b423cfdc842e054d9">compileSourceZIR</a> (<a class="el" href="../../da/d3d/classsema_1_1BoundRootNode.html">sema::BoundRootNode</a> &amp;node, llvm::raw_ostream &amp;ofoutput)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ad54b7028c501ec2dfda0eae88719a62b" id="r_ad54b7028c501ec2dfda0eae88719a62b"><td class="memItemLeft" align="right" valign="top">constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad54b7028c501ec2dfda0eae88719a62b">ZAP_NAME</a> = <a class="el" href="../../d2/d3d/compiler_8hpp.html#aebff4681e15c5ece8a55a1b88b219f44">ZAP_NAME_MACRO</a></td></tr>
+<tr class="memdesc:ad54b7028c501ec2dfda0eae88719a62b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name that displays when &ndash;help is used.  <br /></td></tr>
+<tr class="memitem:a0dbf162c36d8ad1bd3b5a9ca9fd16e9c" id="r_a0dbf162c36d8ad1bd3b5a9ca9fd16e9c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a5d4f3f0e308df81e61d968261b64533c">ColorState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0dbf162c36d8ad1bd3b5a9ca9fd16e9c">colors</a> = <a class="el" href="#a5d4f3f0e308df81e61d968261b64533ca6adf97f83acf6453d4a6a4b1070f3754">ColorState::None</a></td></tr>
 </table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
+<a id="a0acdcff1050bab4113419710c3284caa" name="a0acdcff1050bab4113419710c3284caa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0acdcff1050bab4113419710c3284caa">&#9670;&#160;</a></span>version</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a0acdcff1050bab4113419710c3284caa">zap::version</a> = <a class="el" href="../../d3/dfd/classzap_1_1__version__base.html">_version_base</a>&lt;uint16_t&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Can be changed to any integer or float type. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/dad/version_8hpp_source.html#l00039">39</a> of file <a class="el" href="../../d7/dad/version_8hpp_source.html">version.hpp</a>.</p>
+
+</div>
+</div>
 <a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
+<a id="a5d4f3f0e308df81e61d968261b64533c" name="a5d4f3f0e308df81e61d968261b64533c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d4f3f0e308df81e61d968261b64533c">&#9670;&#160;</a></span>ColorState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a5d4f3f0e308df81e61d968261b64533c">zap::ColorState</a> : uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5d4f3f0e308df81e61d968261b64533ca6adf97f83acf6453d4a6a4b1070f3754" name="a5d4f3f0e308df81e61d968261b64533ca6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5d4f3f0e308df81e61d968261b64533ca78945de8de090e90045d299651a68a9b" name="a5d4f3f0e308df81e61d968261b64533ca78945de8de090e90045d299651a68a9b"></a>Available&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5d4f3f0e308df81e61d968261b64533ca453e6aa38d87b28ccae545967c53004f" name="a5d4f3f0e308df81e61d968261b64533ca453e6aa38d87b28ccae545967c53004f"></a>Unavailable&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00046">46</a> of file <a class="el" href="../../d5/d15/driver_8cpp_source.html">driver.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>: uint8_t { <a class="code hl_enumvalue" href="#a5d4f3f0e308df81e61d968261b64533ca6adf97f83acf6453d4a6a4b1070f3754">None</a>, <a class="code hl_enumvalue" href="#a5d4f3f0e308df81e61d968261b64533ca78945de8de090e90045d299651a68a9b">Available</a>, <a class="code hl_enumvalue" href="#a5d4f3f0e308df81e61d968261b64533ca453e6aa38d87b28ccae545967c53004f">Unavailable</a> };</div>
+<div class="ttc" id="anamespacezap_html_a5d4f3f0e308df81e61d968261b64533ca453e6aa38d87b28ccae545967c53004f"><div class="ttname"><a href="#a5d4f3f0e308df81e61d968261b64533ca453e6aa38d87b28ccae545967c53004f">zap::ColorState::Unavailable</a></div><div class="ttdeci">@ Unavailable</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d15/driver_8cpp_source.html#l00046">driver.cpp:46</a></div></div>
+<div class="ttc" id="anamespacezap_html_a5d4f3f0e308df81e61d968261b64533ca6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="#a5d4f3f0e308df81e61d968261b64533ca6adf97f83acf6453d4a6a4b1070f3754">zap::ColorState::None</a></div><div class="ttdeci">@ None</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d15/driver_8cpp_source.html#l00046">driver.cpp:46</a></div></div>
+<div class="ttc" id="anamespacezap_html_a5d4f3f0e308df81e61d968261b64533ca78945de8de090e90045d299651a68a9b"><div class="ttname"><a href="#a5d4f3f0e308df81e61d968261b64533ca78945de8de090e90045d299651a68a9b">zap::ColorState::Available</a></div><div class="ttdeci">@ Available</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d15/driver_8cpp_source.html#l00046">driver.cpp:46</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a13ae6a43c2e5be75cc58a93a966b62a2" name="a13ae6a43c2e5be75cc58a93a966b62a2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a13ae6a43c2e5be75cc58a93a966b62a2">&#9670;&#160;</a></span>DiagnosticLevel</h2>
 
@@ -116,6 +203,211 @@ Enumerations</h2></td></tr>
 <div class="ttc" id="anamespacezap_html_a13ae6a43c2e5be75cc58a93a966b62a2a3b0649c72650c313a357338dcdfb64ec"><div class="ttname"><a href="#a13ae6a43c2e5be75cc58a93a966b62a2a3b0649c72650c313a357338dcdfb64ec">zap::DiagnosticLevel::Note</a></div><div class="ttdeci">@ Note</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d49/diagnostics_8hpp_source.html#l00010">diagnostics.hpp:10</a></div></div>
 <div class="ttc" id="anamespacezap_html_a13ae6a43c2e5be75cc58a93a966b62a2a902b0d55fddef6f8d651fe1035b7d4bd"><div class="ttname"><a href="#a13ae6a43c2e5be75cc58a93a966b62a2a902b0d55fddef6f8d651fe1035b7d4bd">zap::DiagnosticLevel::Error</a></div><div class="ttdeci">@ Error</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d49/diagnostics_8hpp_source.html#l00012">diagnostics.hpp:12</a></div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="abb82e4d00eb14c0b423cfdc842e054d9" name="abb82e4d00eb14c0b423cfdc842e054d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb82e4d00eb14c0b423cfdc842e054d9">&#9670;&#160;</a></span>compileSourceZIR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool zap::compileSourceZIR </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../da/d3d/classsema_1_1BoundRootNode.html">sema::BoundRootNode</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>node</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">llvm::raw_ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>ofoutput</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00237">237</a> of file <a class="el" href="../../d5/d15/driver_8cpp_source.html">driver.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  237</span>                                                                          {</div>
+<div class="line"><span class="lineno">  238</span>  <a class="code hl_class" href="../../d4/da0/classzir_1_1BoundIRGenerator.html">zir::BoundIRGenerator</a> irGen;</div>
+<div class="line"><span class="lineno">  239</span>  <span class="keyword">auto</span> mod = irGen.<a class="code hl_function" href="../../d4/da0/classzir_1_1BoundIRGenerator.html#abf97cfb82a0ef117b7f0f62b2e7da8f4">generate</a>(node);</div>
+<div class="line"><span class="lineno">  240</span>  <span class="keywordflow">if</span> (mod) {</div>
+<div class="line"><span class="lineno">  241</span>    ofoutput &lt;&lt; mod-&gt;toString();</div>
+<div class="line"><span class="lineno">  242</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  243</span>    <a class="code hl_function" href="#a11aadfb1fe305b0f1b6b1a81757d1fb1">print_red</a>(<span class="stringliteral">&quot;error: &quot;</span>);</div>
+<div class="line"><span class="lineno">  244</span>    llvm::errs() &lt;&lt; <span class="stringliteral">&quot;failed to generate ZIR\n&quot;</span>;</div>
+<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  246</span>  }</div>
+<div class="line"><span class="lineno">  247</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  248</span>}</div>
+<div class="ttc" id="aclasszir_1_1BoundIRGenerator_html"><div class="ttname"><a href="../../d4/da0/classzir_1_1BoundIRGenerator.html">zir::BoundIRGenerator</a></div><div class="ttdef"><b>Definition</b> <a href="../../df/d31/ir__generator_8hpp_source.html#l00013">ir_generator.hpp:14</a></div></div>
+<div class="ttc" id="aclasszir_1_1BoundIRGenerator_html_abf97cfb82a0ef117b7f0f62b2e7da8f4"><div class="ttname"><a href="../../d4/da0/classzir_1_1BoundIRGenerator.html#abf97cfb82a0ef117b7f0f62b2e7da8f4">zir::BoundIRGenerator::generate</a></div><div class="ttdeci">std::unique_ptr&lt; Module &gt; generate(sema::BoundRootNode &amp;root)</div><div class="ttdef"><b>Definition</b> <a href="../../db/d34/ir__generator_8cpp_source.html#l00007">ir_generator.cpp:7</a></div></div>
+<div class="ttc" id="anamespacezap_html_a11aadfb1fe305b0f1b6b1a81757d1fb1"><div class="ttname"><a href="#a11aadfb1fe305b0f1b6b1a81757d1fb1">zap::print_red</a></div><div class="ttdeci">void print_red(llvm::StringRef msg)</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d15/driver_8cpp_source.html#l00053">driver.cpp:53</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../db/d34/ir__generator_8cpp_source.html#l00007">zir::BoundIRGenerator::generate()</a>, and <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00053">print_red()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00250">zap::driver::compileSourceFile()</a>.</p>
+
+</div>
+</div>
+<a id="a11aadfb1fe305b0f1b6b1a81757d1fb1" name="a11aadfb1fe305b0f1b6b1a81757d1fb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11aadfb1fe305b0f1b6b1a81757d1fb1">&#9670;&#160;</a></span>print_red()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void zap::print_red </td>
+          <td>(</td>
+          <td class="paramtype">llvm::StringRef</td>          <td class="paramname"><span class="paramname"><em>msg</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This should be changed ASAP. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00053">53</a> of file <a class="el" href="../../d5/d15/driver_8cpp_source.html">driver.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>                                  {</div>
+<div class="line"><span class="lineno">   54</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a0dbf162c36d8ad1bd3b5a9ca9fd16e9c">colors</a> == <a class="code hl_enumvalue" href="#a5d4f3f0e308df81e61d968261b64533ca6adf97f83acf6453d4a6a4b1070f3754">ColorState::None</a>) {</div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_variable" href="#a0dbf162c36d8ad1bd3b5a9ca9fd16e9c">colors</a> = llvm::errs().has_colors() ? <a class="code hl_enumvalue" href="#a5d4f3f0e308df81e61d968261b64533ca78945de8de090e90045d299651a68a9b">ColorState::Available</a></div>
+<div class="line"><span class="lineno">   56</span>                                       : <a class="code hl_enumvalue" href="#a5d4f3f0e308df81e61d968261b64533ca453e6aa38d87b28ccae545967c53004f">ColorState::Unavailable</a>;</div>
+<div class="line"><span class="lineno">   57</span>  }</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>  <span class="keywordflow">switch</span> (<a class="code hl_variable" href="#a0dbf162c36d8ad1bd3b5a9ca9fd16e9c">colors</a>) {</div>
+<div class="line"><span class="lineno">   60</span>  <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="#a5d4f3f0e308df81e61d968261b64533ca78945de8de090e90045d299651a68a9b">ColorState::Available</a>:</div>
+<div class="line"><span class="lineno">   61</span>    llvm::errs().changeColor(llvm::raw_ostream::RED, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   62</span>    llvm::errs() &lt;&lt; msg;</div>
+<div class="line"><span class="lineno">   63</span>    llvm::errs().resetColor();</div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   65</span>  <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="#a5d4f3f0e308df81e61d968261b64533ca453e6aa38d87b28ccae545967c53004f">ColorState::Unavailable</a>:</div>
+<div class="line"><span class="lineno">   66</span>    llvm::errs() &lt;&lt; msg;</div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   68</span>  <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   70</span>  }</div>
+<div class="line"><span class="lineno">   71</span>}</div>
+<div class="ttc" id="anamespacezap_html_a0dbf162c36d8ad1bd3b5a9ca9fd16e9c"><div class="ttname"><a href="#a0dbf162c36d8ad1bd3b5a9ca9fd16e9c">zap::colors</a></div><div class="ttdeci">ColorState colors</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d15/driver_8cpp_source.html#l00048">driver.cpp:48</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00046">Available</a>, <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00048">colors</a>, <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00046">None</a>, and <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00046">Unavailable</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00343">zap::driver::compile()</a>, <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00250">zap::driver::compileSourceFile()</a>, <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00237">compileSourceZIR()</a>, <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00372">zap::driver::link()</a>, <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00073">zap::driver::parseArgs()</a>, <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00165">zap::driver::splitInputs()</a>, <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00212">verifyFile()</a>, and <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00185">zap::driver::verifyOutput()</a>.</p>
+
+</div>
+</div>
+<a id="a2a6e0e7719e15570ecf3fccf40924d36" name="a2a6e0e7719e15570ecf3fccf40924d36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a6e0e7719e15570ecf3fccf40924d36">&#9670;&#160;</a></span>verifyFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool zap::verifyFile </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00212">212</a> of file <a class="el" href="../../d5/d15/driver_8cpp_source.html">driver.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  212</span>                                                {</div>
+<div class="line"><span class="lineno">  213</span>  <span class="keywordflow">if</span> (!std::filesystem::exists(input)) {</div>
+<div class="line"><span class="lineno">  214</span>    <a class="code hl_function" href="#a11aadfb1fe305b0f1b6b1a81757d1fb1">print_red</a>(<span class="stringliteral">&quot;error: &quot;</span>);</div>
+<div class="line"><span class="lineno">  215</span>    llvm::errs() &lt;&lt; <span class="stringliteral">&quot;provided file doesn&#39;t exist: &quot;</span> &lt;&lt; input &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">  216</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  217</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!std::filesystem::is_regular_file(input)) {</div>
+<div class="line"><span class="lineno">  218</span>    <a class="code hl_function" href="#a11aadfb1fe305b0f1b6b1a81757d1fb1">print_red</a>(<span class="stringliteral">&quot;error: &quot;</span>);</div>
+<div class="line"><span class="lineno">  219</span>    llvm::errs() &lt;&lt; <span class="stringliteral">&quot;provided file isn&#39;t a regular file: &quot;</span> &lt;&lt; input &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">  220</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  221</span>  }</div>
+<div class="line"><span class="lineno">  222</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  223</span>}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00053">print_red()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00225">zap::driver::verifySources()</a>.</p>
+
+</div>
+</div>
+<a id="a6cbfdaf9a7926dea836b51b2a3237e7e" name="a6cbfdaf9a7926dea836b51b2a3237e7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cbfdaf9a7926dea836b51b2a3237e7e">&#9670;&#160;</a></span>ZAP_VERSION()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a0acdcff1050bab4113419710c3284caa">version</a> zap::ZAP_VERSION </td>
+          <td>(</td>
+          <td class="paramtype">0</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">1</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">0</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zap's version, displayed when &ndash;version is used. </p>
+
+<p class="reference">Referenced by <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00073">zap::driver::parseArgs()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+<a id="a0dbf162c36d8ad1bd3b5a9ca9fd16e9c" name="a0dbf162c36d8ad1bd3b5a9ca9fd16e9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dbf162c36d8ad1bd3b5a9ca9fd16e9c">&#9670;&#160;</a></span>colors</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a5d4f3f0e308df81e61d968261b64533c">ColorState</a> zap::colors = <a class="el" href="#a5d4f3f0e308df81e61d968261b64533ca6adf97f83acf6453d4a6a4b1070f3754">ColorState::None</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00048">48</a> of file <a class="el" href="../../d5/d15/driver_8cpp_source.html">driver.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00053">print_red()</a>.</p>
+
+</div>
+</div>
+<a id="ad54b7028c501ec2dfda0eae88719a62b" name="ad54b7028c501ec2dfda0eae88719a62b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad54b7028c501ec2dfda0eae88719a62b">&#9670;&#160;</a></span>ZAP_NAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* zap::ZAP_NAME = <a class="el" href="../../d2/d3d/compiler_8hpp.html#aebff4681e15c5ece8a55a1b88b219f44">ZAP_NAME_MACRO</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Name that displays when &ndash;help is used. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d3d/compiler_8hpp_source.html#l00012">12</a> of file <a class="el" href="../../d2/d3d/compiler_8hpp_source.html">compiler.hpp</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->
