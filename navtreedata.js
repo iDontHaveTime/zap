@@ -29,11 +29,7 @@ var NAVTREE =
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ],
-        [ "Typedefs", "namespacemembers_type.html", null ],
-        [ "Enumerations", "namespacemembers_enum.html", null ],
-        [ "Enumerator", "namespacemembers_eval.html", null ]
+        [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -43,9 +39,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", "functions_vars" ],
-        [ "Enumerations", "functions_enum.html", null ],
-        [ "Related Symbols", "functions_rela.html", null ]
+        [ "Variables", "functions_vars.html", "functions_vars" ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -54,8 +48,7 @@ var NAVTREE =
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", null ]
+        [ "Enumerator", "globals_eval.html", null ]
       ] ]
     ] ]
   ] ]
@@ -64,12 +57,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d2/dd4/namespacezap_1_1opts.html#afe2b5287613dcdc8978daa4404808eab",
-"d4/da0/classzir_1_1BoundIRGenerator.html#a00cbfd798d2a6a3ac73bbea84dda5533",
-"d8/dd5/classIfNode.html",
-"da/de9/classcodegen_1_1LLVMCodeGen.html#a2a88bf58ead7a9f512c904908d6bd226",
-"dc/d2c/classsema_1_1Binder.html#afc0ea927c024a812691148244b9d7239",
-"df/d35/namespacezir.html"
+"d2/ddf/classzir_1_1CondBranchInst.html#a84da0bd750ac3da0c60c81b0e692c412",
+"d4/da0/classzir_1_1BoundIRGenerator.html#aa9b58017010f8410929bbb583e93b7af",
+"d9/dd2/classzir_1_1Type.html#a0df5d6f9acac147ffcb2906eab0918b0",
+"dc/d2c/classsema_1_1Binder.html#a04a3d0fe75b08d4dcf2ef9773e0cd3ca",
+"de/d73/classzap_1_1Parser.html#aaea717b0e4f1121665e4e032f2d1729e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

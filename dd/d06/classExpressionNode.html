@@ -72,19 +72,21 @@ $(function(){initNavTree('dd/d06/classExpressionNode.html','../../','d0/d79/clas
  <div class="center">
   <img src="../../dd/d06/classExpressionNode.png" usemap="#ExpressionNode_map" alt=""/>
   <map id="ExpressionNode_map" name="ExpressionNode_map">
-<area href="../../df/dd0/classNode.html" alt="Node" shape="rect" coords="0,0,110,24"/>
-<area href="../../d0/d85/classArrayLiteralNode.html" alt="ArrayLiteralNode" shape="rect" coords="120,112,230,136"/>
-<area href="../../da/d53/classBinExpr.html" alt="BinExpr" shape="rect" coords="120,168,230,192"/>
-<area href="../../de/df0/classBodyNode.html" alt="BodyNode" shape="rect" coords="120,224,230,248"/>
-<area href="../../d4/d03/classConstBool.html" alt="ConstBool" shape="rect" coords="120,280,230,304"/>
-<area href="../../db/d12/classConstChar.html" alt="ConstChar" shape="rect" coords="120,336,230,360"/>
-<area href="../../dd/db3/classConstFloat.html" alt="ConstFloat" shape="rect" coords="120,392,230,416"/>
-<area href="../../d3/d4c/classConstId.html" alt="ConstId" shape="rect" coords="120,448,230,472"/>
-<area href="../../d5/de1/classConstInt.html" alt="ConstInt" shape="rect" coords="120,504,230,528"/>
-<area href="../../dd/d93/classConstString.html" alt="ConstString" shape="rect" coords="120,560,230,584"/>
-<area href="../../dd/d86/classFunCall.html" alt="FunCall" shape="rect" coords="120,616,230,640"/>
-<area href="../../d8/dd5/classIfNode.html" alt="IfNode" shape="rect" coords="120,672,230,696"/>
-<area href="../../dd/d97/classUnaryExpr.html" alt="UnaryExpr" shape="rect" coords="120,728,230,752"/>
+<area href="../../df/dd0/classNode.html" alt="Node" shape="rect" coords="0,0,130,24"/>
+<area href="../../d0/d85/classArrayLiteralNode.html" alt="ArrayLiteralNode" shape="rect" coords="140,112,270,136"/>
+<area href="../../da/d53/classBinExpr.html" alt="BinExpr" shape="rect" coords="140,168,270,192"/>
+<area href="../../de/df0/classBodyNode.html" alt="BodyNode" shape="rect" coords="140,224,270,248"/>
+<area href="../../d4/d03/classConstBool.html" alt="ConstBool" shape="rect" coords="140,280,270,304"/>
+<area href="../../db/d12/classConstChar.html" alt="ConstChar" shape="rect" coords="140,336,270,360"/>
+<area href="../../dd/db3/classConstFloat.html" alt="ConstFloat" shape="rect" coords="140,392,270,416"/>
+<area href="../../d3/d4c/classConstId.html" alt="ConstId" shape="rect" coords="140,448,270,472"/>
+<area href="../../d5/de1/classConstInt.html" alt="ConstInt" shape="rect" coords="140,504,270,528"/>
+<area href="../../dd/d93/classConstString.html" alt="ConstString" shape="rect" coords="140,560,270,584"/>
+<area href="../../dd/d86/classFunCall.html" alt="FunCall" shape="rect" coords="140,616,270,640"/>
+<area href="../../d8/dd5/classIfNode.html" alt="IfNode" shape="rect" coords="140,672,270,696"/>
+<area href="../../d9/ddc/classIndexAccessNode.html" alt="IndexAccessNode" shape="rect" coords="140,728,270,752"/>
+<area href="../../d9/dff/classMemberAccessNode.html" alt="MemberAccessNode" shape="rect" coords="140,784,270,808"/>
+<area href="../../dd/d97/classUnaryExpr.html" alt="UnaryExpr" shape="rect" coords="140,840,270,864"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -185,11 +187,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../df/dd0/classNode.html#a005a33d684aeb049d1e909704f206ae6">Node</a>.</p>
 
-<p>Reimplemented in <a class="el" href="../../dd/d86/classFunCall.html#a9619f42a13158a0a21868d8276ba4d7a">FunCall</a>, <a class="el" href="../../d8/dd5/classIfNode.html#a92f01f921539591a24be36b41c283f5c">IfNode</a>, and <a class="el" href="../../dd/d97/classUnaryExpr.html#a4686e69b40cb79c1cb9a083aef30b25a">UnaryExpr</a>.</p>
+<p>Reimplemented in <a class="el" href="../../dd/d86/classFunCall.html#a9619f42a13158a0a21868d8276ba4d7a">FunCall</a>, <a class="el" href="../../d8/dd5/classIfNode.html#a92f01f921539591a24be36b41c283f5c">IfNode</a>, <a class="el" href="../../d9/ddc/classIndexAccessNode.html#ab43b090f5ea924ecd5551907b510f0e1">IndexAccessNode</a>, <a class="el" href="../../d9/dff/classMemberAccessNode.html#ae305ceb27ec172265b0deecc93bada64">MemberAccessNode</a>, and <a class="el" href="../../dd/d97/classUnaryExpr.html#a4686e69b40cb79c1cb9a083aef30b25a">UnaryExpr</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="../../d0/df1/expr__node_8hpp_source.html#l00010">10</a> of file <a class="el" href="../../d0/df1/expr__node_8hpp_source.html">expr_node.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   10</span>{ v.<a class="code hl_function" href="../../dc/d13/structVisitor.html#a9588a36d47f9d70e6747bd107ab35588">visit</a>(*<span class="keyword">this</span>); }</div>
-<div class="ttc" id="astructVisitor_html_a9588a36d47f9d70e6747bd107ab35588"><div class="ttname"><a href="../../dc/d13/structVisitor.html#a9588a36d47f9d70e6747bd107ab35588">Visitor::visit</a></div><div class="ttdeci">virtual void visit(Node &amp;)</div><div class="ttdef"><b>Definition</b> <a href="../../d2/df0/visitor_8hpp_source.html#l00044">visitor.hpp:44</a></div></div>
+<div class="ttc" id="astructVisitor_html_a9588a36d47f9d70e6747bd107ab35588"><div class="ttname"><a href="../../dc/d13/structVisitor.html#a9588a36d47f9d70e6747bd107ab35588">Visitor::visit</a></div><div class="ttdeci">virtual void visit(Node &amp;)</div><div class="ttdef"><b>Definition</b> <a href="../../d2/df0/visitor_8hpp_source.html#l00045">visitor.hpp:45</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d0/df1/expr__node_8hpp_source.html#l00010">accept()</a>.</p>
 

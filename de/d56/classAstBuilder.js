@@ -1,12 +1,13 @@
 var classAstBuilder =
 [
     [ "makeArrayLiteral", "de/d56/classAstBuilder.html#adc49af93510eb83a2e28e7e145864c97", null ],
-    [ "makeAssign", "de/d56/classAstBuilder.html#a98a1e15f3e36ac5a4b0603adc22edefb", null ],
+    [ "makeAssign", "de/d56/classAstBuilder.html#a2ec0551bdfa44848335dafa1481e03a7", null ],
     [ "makeBinExpr", "de/d56/classAstBuilder.html#a94bd12c5569379b9ec5115c7348e09ed", null ],
     [ "makeBody", "de/d56/classAstBuilder.html#add1f1cc36b637c14dac70d735b5d4218", null ],
     [ "makeBreak", "de/d56/classAstBuilder.html#ae2d2d2f3f301515a8d052cdedf3ed281", null ],
     [ "makeConstBool", "de/d56/classAstBuilder.html#a44d6fe2b77975539fb422e618d3eee5b", null ],
     [ "makeConstChar", "de/d56/classAstBuilder.html#a475df4c7fe3dfa4e13ecf50612ddae1b", null ],
+    [ "makeConstDecl", "de/d56/classAstBuilder.html#a3c90f430c4f3361e1ac584b171bb251f", null ],
     [ "makeConstFloat", "de/d56/classAstBuilder.html#a59be3be3368a68dcdbdb215ecd7e6850", null ],
     [ "makeConstId", "de/d56/classAstBuilder.html#a6d3d6fd45f588edd20ac26149d07586e", null ],
     [ "makeConstInt", "de/d56/classAstBuilder.html#a1f90996b2092fd0b3ce010449c4c3909", null ],
@@ -16,6 +17,8 @@ var classAstBuilder =
     [ "makeFunCall", "de/d56/classAstBuilder.html#a01b783fef63f6c0d838481bba3d9b0c2", null ],
     [ "makeFunDecl", "de/d56/classAstBuilder.html#a9f89f87faa5a8a2282053caa42598cd0", null ],
     [ "makeIf", "de/d56/classAstBuilder.html#ab9eb852498da6f2991e63aaeac1674b0", null ],
+    [ "makeIndexAccess", "de/d56/classAstBuilder.html#a42f89f5e37be22ccf9f36ddc2a1bfeff", null ],
+    [ "makeMemberAccess", "de/d56/classAstBuilder.html#a2ace1747b3a98638ac1af9151043f837", null ],
     [ "makeParam", "de/d56/classAstBuilder.html#a1494d1e029ea23c78de6d6bf90bc7d40", null ],
     [ "makeRecordDecl", "de/d56/classAstBuilder.html#afc6fd118976087fddc9b314af2344555", null ],
     [ "makeReturn", "de/d56/classAstBuilder.html#a6159f65c76cc2c64b78992aad2ab7acc", null ],

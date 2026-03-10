@@ -84,6 +84,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aea6d8c9ebc167de29af145bb67b18023" id="r_aea6d8c9ebc167de29af145bb67b18023"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea6d8c9ebc167de29af145bb67b18023">isReferenceType</a> () const override</td></tr>
 <tr class="memitem:aa2849b6f36f3738779ddb2e5aaf95900" id="r_aa2849b6f36f3738779ddb2e5aaf95900"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2849b6f36f3738779ddb2e5aaf95900">getVariants</a> () const</td></tr>
 <tr class="memitem:aed780e0168110a9fbcf66902c1de7186" id="r_aed780e0168110a9fbcf66902c1de7186"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed780e0168110a9fbcf66902c1de7186">getName</a> () const</td></tr>
+<tr class="memitem:ab156a4fe6e20aaa6499c4ae8906eec69" id="r_ab156a4fe6e20aaa6499c4ae8906eec69"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab156a4fe6e20aaa6499c4ae8906eec69">getVariantIndex</a> (const std::string &amp;variantName) const</td></tr>
 <tr class="inherit_header pub_methods_classzir_1_1Type"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classzir_1_1Type')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="../../d9/dd2/classzir_1_1Type.html">zir::Type</a></td></tr>
 <tr class="memitem:abe32a959bde0e2bc5435294cae74fbfc inherit pub_methods_classzir_1_1Type" id="r_abe32a959bde0e2bc5435294cae74fbfc"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd2/classzir_1_1Type.html#abe32a959bde0e2bc5435294cae74fbfc">~Type</a> ()=default</td></tr>
 </table><table class="memberdecls">
@@ -193,6 +194,43 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   88</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#adbcddedf3b5cc4592d70f39229e5505f">name</a>; }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../da/d72/type_8hpp_source.html#l00077">name</a>.</p>
+
+</div>
+</div>
+<a id="ab156a4fe6e20aaa6499c4ae8906eec69" name="ab156a4fe6e20aaa6499c4ae8906eec69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab156a4fe6e20aaa6499c4ae8906eec69">&#9670;&#160;</a></span>getVariantIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int zir::EnumType::getVariantIndex </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>variantName</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../da/d72/type_8hpp_source.html#l00090">90</a> of file <a class="el" href="../../da/d72/type_8hpp_source.html">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   90</span>                                                          {</div>
+<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code hl_variable" href="#a75ba9f528ce7272aba9e55efd6a67a37">variants</a>.size(); ++i) {</div>
+<div class="line"><span class="lineno">   92</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a75ba9f528ce7272aba9e55efd6a67a37">variants</a>[i] == variantName) {</div>
+<div class="line"><span class="lineno">   93</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(i);</div>
+<div class="line"><span class="lineno">   94</span>      }</div>
+<div class="line"><span class="lineno">   95</span>    }</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">   97</span>  }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../da/d72/type_8hpp_source.html#l00078">variants</a>.</p>
 
 </div>
 </div>
@@ -337,7 +375,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../da/d72/type_8hpp_source.html#l00078">78</a> of file <a class="el" href="../../da/d72/type_8hpp_source.html">type.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../da/d72/type_8hpp_source.html#l00081">EnumType()</a>, and <a class="el" href="../../da/d72/type_8hpp_source.html#l00087">getVariants()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../da/d72/type_8hpp_source.html#l00081">EnumType()</a>, <a class="el" href="../../da/d72/type_8hpp_source.html#l00090">getVariantIndex()</a>, and <a class="el" href="../../da/d72/type_8hpp_source.html#l00087">getVariants()</a>.</p>
 
 </div>
 </div>

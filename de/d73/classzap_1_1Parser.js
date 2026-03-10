@@ -12,6 +12,7 @@ var classzap_1_1Parser =
     [ "parseBinaryExpression", "de/d73/classzap_1_1Parser.html#a5464d06899e0f4c265ec40296965f678", null ],
     [ "parseBody", "de/d73/classzap_1_1Parser.html#a88bd1862aa8cc38b9193810a8c9a7eba", null ],
     [ "parseBreak", "de/d73/classzap_1_1Parser.html#a93e68288314deca05c7b77215a89b002", null ],
+    [ "parseConstDecl", "de/d73/classzap_1_1Parser.html#af08720cd3d8b56ed1484f5a092336dcd", null ],
     [ "parseContinue", "de/d73/classzap_1_1Parser.html#aa86e867a29cfb364070b4a3c178cef5d", null ],
     [ "parseEnumDecl", "de/d73/classzap_1_1Parser.html#adadfa3d4a34709ea11ad89da011d6497", null ],
     [ "parseExpression", "de/d73/classzap_1_1Parser.html#a34d3bbc8226f45436d346e6e6870e301", null ],
