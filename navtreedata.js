@@ -62,6 +62,7 @@ var NAVTREE =
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
@@ -73,16 +74,21 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d1/d67/namespacezap_1_1lsp_1_1anonymous__namespace_02lsp_8cpp_03.html#abf255234f8145f4a18d6e0878a154376",
-"d2/df1/classzir_1_1ReturnInst.html#a0ec4c6825b3d68da6500654eeb282aa4",
-"d3/dfe/classzap_1_1lsp_1_1JsonParser.html#ab7a3eefb2e0da5bef75d636183b034eb",
-"d6/d62/symbol_8hpp_source.html",
-"d8/d9e/body__node_8hpp.html",
-"da/d27/classzap_1_1Parser_1_1ParseError.html",
-"db/d94/classsema_1_1BoundTernaryExpression.html#a2b017488695a41b48c930c0154fb16e6",
-"dc/d2c/classsema_1_1Binder.html#adbb6e6a9cd76e780bcd9a058d068ced8",
-"de/d73/classzap_1_1Parser.html#a262e106a5ff6b6267ebaa941e3a85efb",
-"df/dd7/classzir_1_1EnumType.html#a77c45a23a86690738bbc68a6cac434a4"
+"d0/df9/classsema_1_1BoundVisitor.html#a46756e333fc346e628bd92018ccad1aa",
+"d2/d0b/parameter__node_8hpp_source.html",
+"d3/d09/classzap_1_1Stream.html#a098c8da4e552c96912ac900fbd9426af",
+"d3/ddb/type__node_8hpp.html",
+"d4/da0/classzir_1_1BoundIRGenerator.html#aa02ad01aea6cd608911fcac3a902cb30",
+"d7/d1a/namespacezap.html#a873ac3ffa9672c2ecc2552347957d68ea01fd5046e2769cae7b662d3dfbb64045",
+"d8/d9a/classsema_1_1VariableSymbol.html#ade1edc3a6a721c02f7f0c5c0059ac8d9",
+"d9/d68/classzir_1_1Module.html#a556f3b7e5ee8aef9729fb7a91cc79a3f",
+"da/de1/classzir_1_1RecordType.html#a5ea346eb95df6f260a1d50322d45a582",
+"db/d12/classConstChar.html#a7d6777b330682747076430d020838ffc",
+"dc/d13/structVisitor.html#a528a7a628127d086c0aeb39bb279bae6",
+"dc/d2c/classsema_1_1Binder.html#acc7af7747070254879e1d5df01d0e55f",
+"dd/d10/classsema_1_1BoundStatement.html#a37c54d698c51805f1fdb4ef871fbb9ac",
+"de/d73/classzap_1_1Parser.html#a711159bf4d7559afebf605bad1cd691d",
+"df/da0/classsema_1_1BoundFunctionCall.html#ac7d92434c392b192bbeb725607a21286"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

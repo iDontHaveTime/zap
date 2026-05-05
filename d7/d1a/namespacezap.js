@@ -2,14 +2,37 @@ var namespacezap =
 [
     [ "anonymous_namespace{driver.cpp}", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html", [
       [ "computeLogicalModulePath", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#aec887b6f2fdb75498785916f4fe3bd13", null ],
+      [ "currentExecutablePath", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#a1b46bdefb6c665374ef9f52c428c8df1", null ],
+      [ "emitRequestedTextOutputs", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#acfb14e0533098d3b50db6c54a7b5cfb3", null ],
       [ "loadModuleGraph", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#a5133a75d670ba094d22e9aefdaef5c29", null ],
       [ "readSourceFile", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#af4bbc238e3e3e6f7f312f70f61694f2a", null ],
       [ "resolveImportTargets", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#a55d5b8a988ea0ec485ebdbda73d289b4", null ],
-      [ "stripSourceExtension", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#acbf6eae3836b52a72fa7cee7634b63e1", null ]
+      [ "stdlibObjectPath", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#a1904ce2bef785a25665b697eb2118993", null ],
+      [ "stdlibRootPath", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#a240275382280d14435c28bf270732618", null ],
+      [ "stripSourceExtension", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#acbf6eae3836b52a72fa7cee7634b63e1", null ],
+      [ "g_executable_path", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#a4d03d938e1256c804d3a8483d1823b61", null ]
     ] ],
     [ "lsp", "d5/d23/namespacezap_1_1lsp.html", "d5/d23/namespacezap_1_1lsp" ],
     [ "anonymous_namespace{parser.cpp}", "dc/d02/namespacezap_1_1anonymous__namespace_02parser_8cpp_03.html", [
       [ "qualifiedNameFromExpression", "dc/d02/namespacezap_1_1anonymous__namespace_02parser_8cpp_03.html#a05f2998a2f843ce15a663ecb08b93391", null ]
+    ] ],
+    [ "detail", "d5/d59/namespacezap_1_1detail.html", [
+      [ "clampToCodePointBoundary", "d5/d59/namespacezap_1_1detail.html#a535173ceece1e84b3918c35066d86d58", null ],
+      [ "computeUnderlineColumns", "d5/d59/namespacezap_1_1detail.html#a8ef9daef2101239d359d560fab8ed0ab", null ],
+      [ "decodeUtf8At", "d5/d59/namespacezap_1_1detail.html#a5a7229df2b4d21553fa6b3be7a7bfc2c", null ],
+      [ "displayWidthOfCodePoint", "d5/d59/namespacezap_1_1detail.html#a2288dee88cd509d0df785742ce1d46fb", null ],
+      [ "expandTabsForDisplay", "d5/d59/namespacezap_1_1detail.html#a5531f950675545147f4bbc8aa5ec5c57", null ],
+      [ "findLineEnd", "d5/d59/namespacezap_1_1detail.html#afce630a1d3ea819c96bde7379b8b5c6c", null ],
+      [ "findLineStartByLine", "d5/d59/namespacezap_1_1detail.html#ab0eba498e7c31e10c2ef00b72aa2994f", null ],
+      [ "findLineStartByOffset", "d5/d59/namespacezap_1_1detail.html#aa72f3526d59960e9117f067d1422d28e", null ],
+      [ "isCombining", "d5/d59/namespacezap_1_1detail.html#ad08c88644a0ec68ccee0cec0aa76825c", null ],
+      [ "isUtf8ContinuationByte", "d5/d59/namespacezap_1_1detail.html#a2b967ef21a91d7d8c6024ff6cb09759a", null ],
+      [ "isWide", "d5/d59/namespacezap_1_1detail.html#aaa5bfdc749950e973e748a4865f981d5", null ],
+      [ "levelToColor", "d5/d59/namespacezap_1_1detail.html#ad80aee2dfa3b59367575dd9973d717c8", null ],
+      [ "levelToText", "d5/d59/namespacezap_1_1detail.html#af571caafb9aa20dfcc3c56f65d4218bc", null ],
+      [ "tabWidth", "d5/d59/namespacezap_1_1detail.html#a29f591a0552384688b0bef1fa58f5200", null ],
+      [ "utf8CodePointLength", "d5/d59/namespacezap_1_1detail.html#abc46d5e2263a7c5fb10d5e23ab9cd55d", null ],
+      [ "visualColumnsForBytes", "d5/d59/namespacezap_1_1detail.html#a8b213037ba196e2f908fb2e015e5d08b", null ]
     ] ],
     [ "driver", "d9/d00/classzap_1_1driver.html", "d9/d00/classzap_1_1driver" ],
     [ "_version_base", "d3/dfd/classzap_1_1__version__base.html", "d3/dfd/classzap_1_1__version__base" ],
@@ -54,11 +77,14 @@ var namespacezap =
       [ "Error", "d7/d1a/namespacezap.html#a13ae6a43c2e5be75cc58a93a966b62a2a902b0d55fddef6f8d651fe1035b7d4bd", null ]
     ] ],
     [ "compileLoadedModules", "d7/d1a/namespacezap.html#a5b534b45b24952eb8d0ee6cbdb4eb199", null ],
+    [ "compileObjectFromZIR", "d7/d1a/namespacezap.html#aa45f8059fbd9d638fea35ed88ebb1e31", null ],
+    [ "compileSourceLLVMFromZIR", "d7/d1a/namespacezap.html#a59eaa38dc4c00c6b9ffe0e78eec3f3c9", null ],
     [ "compileSourceZIR", "d7/d1a/namespacezap.html#a4568178cd71b87328c92ebc2c1ddf595", null ],
     [ "err", "d7/d1a/namespacezap.html#a674956178a1a7ce6606f78a8839a2e18", null ],
+    [ "generateZIRModule", "d7/d1a/namespacezap.html#ac3b3cc5f8cb33ef1c1ae96b60e68125e", null ],
     [ "out", "d7/d1a/namespacezap.html#ae6ad8e87b28adc8798a538d35a6f3e66", null ],
     [ "verifyFile", "d7/d1a/namespacezap.html#a2a6e0e7719e15570ecf3fccf40924d36", null ],
-    [ "ZAP_VERSION", "d7/d1a/namespacezap.html#a6cbfdaf9a7926dea836b51b2a3237e7e", null ],
+    [ "ZAP_VERSION", "d7/d1a/namespacezap.html#a8c90e6cde85bb444e903439d6a561841", null ],
     [ "color_override", "d7/d1a/namespacezap.html#a198c6023d35b57a9a1a4300238c786de", null ],
     [ "standard_stream_colors", "d7/d1a/namespacezap.html#ac630b2e88f5129f86e9a7dfc5b886e52", null ],
     [ "ZAP_NAME", "d7/d1a/namespacezap.html#ad54b7028c501ec2dfda0eae88719a62b", null ]

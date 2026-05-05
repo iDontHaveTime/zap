@@ -4,6 +4,8 @@ var hierarchy =
     [ "anonymous_namespace{lsp-main.cpp}::AnalysisResult", "dd/d93/structanonymous__namespace_02lsp-main_8cpp_03_1_1AnalysisResult.html", null ],
     [ "Argument", "dc/d8f/structArgument.html", null ],
     [ "AstBuilder", "de/d56/classAstBuilder.html", null ],
+    [ "AttributeArgument", "dc/dc4/structAttributeArgument.html", null ],
+    [ "AttributeNode", "d7/da3/structAttributeNode.html", null ],
     [ "zir::BasicBlock", "d7/d6e/classzir_1_1BasicBlock.html", null ],
     [ "sema::ResolvedImport::Binding", "dc/d93/structsema_1_1ResolvedImport_1_1Binding.html", null ],
     [ "sema::BoundNode", "d0/db2/classsema_1_1BoundNode.html", [
@@ -12,15 +14,23 @@ var hierarchy =
         [ "sema::BoundArrayLiteral", "dd/d9c/classsema_1_1BoundArrayLiteral.html", null ],
         [ "sema::BoundBinaryExpression", "df/dee/classsema_1_1BoundBinaryExpression.html", null ],
         [ "sema::BoundCast", "d2/d0f/classsema_1_1BoundCast.html", null ],
+        [ "sema::BoundFailableHandleExpression", "d5/d43/classsema_1_1BoundFailableHandleExpression.html", null ],
+        [ "sema::BoundFallbackExpression", "d9/d37/classsema_1_1BoundFallbackExpression.html", null ],
         [ "sema::BoundFunctionCall", "df/da0/classsema_1_1BoundFunctionCall.html", null ],
+        [ "sema::BoundFunctionReference", "da/d6b/classsema_1_1BoundFunctionReference.html", null ],
         [ "sema::BoundIndexAccess", "d6/d5e/classsema_1_1BoundIndexAccess.html", null ],
+        [ "sema::BoundIndirectCall", "de/d3e/classsema_1_1BoundIndirectCall.html", null ],
         [ "sema::BoundLiteral", "db/d85/classsema_1_1BoundLiteral.html", null ],
         [ "sema::BoundMemberAccess", "db/ddd/classsema_1_1BoundMemberAccess.html", null ],
         [ "sema::BoundModuleReference", "d5/d03/classsema_1_1BoundModuleReference.html", null ],
+        [ "sema::BoundNewExpression", "db/d54/classsema_1_1BoundNewExpression.html", null ],
         [ "sema::BoundStructLiteral", "d8/d4b/classsema_1_1BoundStructLiteral.html", null ],
         [ "sema::BoundTernaryExpression", "db/d94/classsema_1_1BoundTernaryExpression.html", null ],
+        [ "sema::BoundTryExpression", "d8/d57/classsema_1_1BoundTryExpression.html", null ],
         [ "sema::BoundUnaryExpression", "d6/d6f/classsema_1_1BoundUnaryExpression.html", null ],
-        [ "sema::BoundVariableExpression", "dc/d46/classsema_1_1BoundVariableExpression.html", null ]
+        [ "sema::BoundVariableExpression", "dc/d46/classsema_1_1BoundVariableExpression.html", null ],
+        [ "sema::BoundWeakAliveExpression", "d2/d78/classsema_1_1BoundWeakAliveExpression.html", null ],
+        [ "sema::BoundWeakLockExpression", "d8/df0/classsema_1_1BoundWeakLockExpression.html", null ]
       ] ],
       [ "sema::BoundExternalFunctionDeclaration", "d7/d1f/classsema_1_1BoundExternalFunctionDeclaration.html", null ],
       [ "sema::BoundFunctionDeclaration", "db/d37/classsema_1_1BoundFunctionDeclaration.html", null ],
@@ -32,6 +42,8 @@ var hierarchy =
         [ "sema::BoundBreakStatement", "d1/d54/classsema_1_1BoundBreakStatement.html", null ],
         [ "sema::BoundContinueStatement", "d3/dc3/classsema_1_1BoundContinueStatement.html", null ],
         [ "sema::BoundExpressionStatement", "de/d88/classsema_1_1BoundExpressionStatement.html", null ],
+        [ "sema::BoundFailStatement", "d0/dd5/classsema_1_1BoundFailStatement.html", null ],
+        [ "sema::BoundForStatement", "db/dcc/classsema_1_1BoundForStatement.html", null ],
         [ "sema::BoundIfStatement", "d0/dec/classsema_1_1BoundIfStatement.html", null ],
         [ "sema::BoundReturnStatement", "d2/d99/classsema_1_1BoundReturnStatement.html", null ],
         [ "sema::BoundVariableDeclaration", "d2/d5b/classsema_1_1BoundVariableDeclaration.html", null ],
@@ -42,6 +54,9 @@ var hierarchy =
       [ "codegen::LLVMCodeGen", "da/de9/classcodegen_1_1LLVMCodeGen.html", null ],
       [ "zir::BoundIRGenerator", "d4/da0/classzir_1_1BoundIRGenerator.html", null ]
     ] ],
+    [ "anonymous_namespace{lsp-main.cpp}::CallContext", "d1/dc2/structanonymous__namespace_02lsp-main_8cpp_03_1_1CallContext.html", null ],
+    [ "codegen::ClassArcEmitter", "d9/d1d/classcodegen_1_1ClassArcEmitter.html", null ],
+    [ "sema::Binder::ClassInfo", "d4/d52/structsema_1_1Binder_1_1ClassInfo.html", null ],
     [ "zap::Diagnostic", "df/d01/structzap_1_1Diagnostic.html", null ],
     [ "zap::DiagnosticEngine", "d3/d28/classzap_1_1DiagnosticEngine.html", null ],
     [ "zap::DiagnosticPosition", "d7/dc4/structzap_1_1DiagnosticPosition.html", null ],
@@ -49,9 +64,13 @@ var hierarchy =
     [ "zap::DiagnosticTextFormatter", "d8/dbe/classzap_1_1DiagnosticTextFormatter.html", null ],
     [ "anonymous_namespace{lsp-main.cpp}::DocumentState", "d6/d99/structanonymous__namespace_02lsp-main_8cpp_03_1_1DocumentState.html", null ],
     [ "zap::driver", "d9/d00/classzap_1_1driver.html", null ],
+    [ "EnumDecl::Entry", "d9/de9/structEnumDecl_1_1Entry.html", null ],
     [ "zir::RecordType::Field", "d3/dc7/structzir_1_1RecordType_1_1Field.html", null ],
+    [ "zir::AggregateConstant::FieldValue", "d7/dfa/structzir_1_1AggregateConstant_1_1FieldValue.html", null ],
     [ "zir::Function", "dc/d90/classzir_1_1Function.html", null ],
+    [ "GenericConstraint", "d2/d6f/structGenericConstraint.html", null ],
     [ "zap::HandleColors", "d4/d3e/structzap_1_1HandleColors.html", null ],
+    [ "anonymous_namespace{lsp-main.cpp}::HoverInfo", "dd/d11/structanonymous__namespace_02lsp-main_8cpp_03_1_1HoverInfo.html", null ],
     [ "ImportBinding", "d7/de6/structImportBinding.html", null ],
     [ "zir::Instruction", "d0/dad/classzir_1_1Instruction.html", [
       [ "zir::AllocInst", "d1/dc3/classzir_1_1AllocInst.html", null ],
@@ -68,12 +87,16 @@ var hierarchy =
       [ "zir::ReleaseInst", "d0/db2/classzir_1_1ReleaseInst.html", null ],
       [ "zir::RetainInst", "da/db6/classzir_1_1RetainInst.html", null ],
       [ "zir::ReturnInst", "d2/df1/classzir_1_1ReturnInst.html", null ],
-      [ "zir::StoreInst", "dc/d2e/classzir_1_1StoreInst.html", null ]
+      [ "zir::StoreInst", "dc/d2e/classzir_1_1StoreInst.html", null ],
+      [ "zir::WeakAliveInst", "d3/d31/classzir_1_1WeakAliveInst.html", null ],
+      [ "zir::WeakLockInst", "d0/d7a/classzir_1_1WeakLockInst.html", null ]
     ] ],
     [ "zap::lsp::JsonObject", "d2/dba/classzap_1_1lsp_1_1JsonObject.html", null ],
     [ "zap::lsp::JsonParser", "d3/dfe/classzap_1_1lsp_1_1JsonParser.html", null ],
     [ "zap::lsp::JsonRPC", "d3/d6a/classzap_1_1lsp_1_1JsonRPC.html", null ],
     [ "Lexer", "d6/dc0/classLexer.html", null ],
+    [ "anonymous_namespace{lsp-main.cpp}::LspFlags", "d6/dda/structanonymous__namespace_02lsp-main_8cpp_03_1_1LspFlags.html", null ],
+    [ "anonymous_namespace{lsp-main.cpp}::LspSignature", "dc/db4/structanonymous__namespace_02lsp-main_8cpp_03_1_1LspSignature.html", null ],
     [ "anonymous_namespace{lsp-main.cpp}::LspSymbol", "d1/d24/structanonymous__namespace_02lsp-main_8cpp_03_1_1LspSymbol.html", null ],
     [ "zir::Module", "d9/d68/classzir_1_1Module.html", null ],
     [ "sema::ModuleInfo", "d0/d65/structsema_1_1ModuleInfo.html", null ],
@@ -82,18 +105,26 @@ var hierarchy =
       [ "ExpressionNode", "dd/d06/classExpressionNode.html", [
         [ "ArrayLiteralNode", "d0/d85/classArrayLiteralNode.html", null ],
         [ "BinExpr", "da/d53/classBinExpr.html", null ],
-        [ "BodyNode", "de/df0/classBodyNode.html", null ],
+        [ "BodyNode", "de/df0/classBodyNode.html", [
+          [ "UnsafeBlockNode", "d5/dff/classUnsafeBlockNode.html", null ]
+        ] ],
+        [ "CastExpr", "d1/d4d/classCastExpr.html", null ],
         [ "ConstBool", "d4/d03/classConstBool.html", null ],
         [ "ConstChar", "db/d12/classConstChar.html", null ],
         [ "ConstFloat", "dd/db3/classConstFloat.html", null ],
         [ "ConstId", "d3/d4c/classConstId.html", null ],
         [ "ConstInt", "d5/de1/classConstInt.html", null ],
+        [ "ConstNull", "d5/ddf/classConstNull.html", null ],
         [ "ConstString", "dd/d93/classConstString.html", null ],
+        [ "FailableHandleExpr", "de/d45/classFailableHandleExpr.html", null ],
+        [ "FallbackExpr", "d5/d7b/classFallbackExpr.html", null ],
         [ "FunCall", "dd/d86/classFunCall.html", null ],
         [ "IndexAccessNode", "d9/ddc/classIndexAccessNode.html", null ],
         [ "MemberAccessNode", "d9/dff/classMemberAccessNode.html", null ],
+        [ "NewExpr", "d9/d59/classNewExpr.html", null ],
         [ "StructLiteralNode", "de/d32/classStructLiteralNode.html", null ],
         [ "TernaryExpr", "d5/d02/classTernaryExpr.html", null ],
+        [ "TryExpr", "d3/da8/classTryExpr.html", null ],
         [ "UnaryExpr", "dd/d97/classUnaryExpr.html", null ]
       ] ],
       [ "ParameterNode", "d9/dd3/classParameterNode.html", null ],
@@ -103,13 +134,18 @@ var hierarchy =
         [ "BreakNode", "d7/db8/classBreakNode.html", null ],
         [ "ConstDecl", "d2/def/classConstDecl.html", null ],
         [ "ContinueNode", "dd/d66/classContinueNode.html", null ],
+        [ "FailNode", "d5/d44/classFailNode.html", null ],
+        [ "ForInNode", "dd/def/classForInNode.html", null ],
+        [ "ForNode", "da/d0b/classForNode.html", null ],
         [ "FunCall", "dd/d86/classFunCall.html", null ],
         [ "IfNode", "d8/dd5/classIfNode.html", null ],
+        [ "IfTypeNode", "d1/dbf/classIfTypeNode.html", null ],
         [ "ReturnNode", "dd/d80/classReturnNode.html", null ],
         [ "VarDecl", "d0/d3d/classVarDecl.html", null ],
         [ "WhileNode", "d2/df8/classWhileNode.html", null ]
       ] ],
       [ "TopLevel", "d8/d65/classTopLevel.html", [
+        [ "ClassDecl", "d6/d7b/classClassDecl.html", null ],
         [ "ConstDecl", "d2/def/classConstDecl.html", null ],
         [ "EnumDecl", "d0/d96/classEnumDecl.html", null ],
         [ "ExtDecl", "d3/df9/classExtDecl.html", null ],
@@ -140,6 +176,7 @@ var hierarchy =
     [ "sema::Symbol", "d1/df6/classsema_1_1Symbol.html", [
       [ "sema::FunctionSymbol", "db/db1/classsema_1_1FunctionSymbol.html", null ],
       [ "sema::ModuleSymbol", "d3/d56/classsema_1_1ModuleSymbol.html", null ],
+      [ "sema::OverloadSetSymbol", "de/d14/classsema_1_1OverloadSetSymbol.html", null ],
       [ "sema::TypeSymbol", "d0/d06/classsema_1_1TypeSymbol.html", null ],
       [ "sema::VariableSymbol", "d8/d9a/classsema_1_1VariableSymbol.html", null ]
     ] ],
@@ -148,18 +185,26 @@ var hierarchy =
     [ "zir::Type", "d9/dd2/classzir_1_1Type.html", [
       [ "zir::ArrayType", "d8/d68/classzir_1_1ArrayType.html", null ],
       [ "zir::EnumType", "df/dd7/classzir_1_1EnumType.html", null ],
+      [ "zir::FunctionPointerType", "d0/d48/classzir_1_1FunctionPointerType.html", null ],
       [ "zir::PointerType", "d4/d67/classzir_1_1PointerType.html", null ],
       [ "zir::PrimitiveType", "d0/d21/classzir_1_1PrimitiveType.html", null ],
-      [ "zir::RecordType", "da/de1/classzir_1_1RecordType.html", null ]
+      [ "zir::RecordType", "da/de1/classzir_1_1RecordType.html", [
+        [ "zir::ClassType", "dc/dae/classzir_1_1ClassType.html", null ]
+      ] ]
     ] ],
     [ "zir::Value", "da/d98/classzir_1_1Value.html", [
+      [ "zir::AggregateConstant", "dd/de3/classzir_1_1AggregateConstant.html", null ],
       [ "zir::Argument", "d3/d57/classzir_1_1Argument.html", null ],
       [ "zir::Constant", "da/d2d/classzir_1_1Constant.html", null ],
+      [ "zir::Global", "d0/d8c/classzir_1_1Global.html", null ],
       [ "zir::Register", "da/d1e/classzir_1_1Register.html", null ]
     ] ],
+    [ "zir::EnumType::Variant", "d1/d76/structzir_1_1EnumType_1_1Variant.html", null ],
     [ "Visitor", "dc/d13/structVisitor.html", [
       [ "sema::Binder", "dc/d2c/classsema_1_1Binder.html", null ]
     ] ],
     [ "anonymous_namespace{lsp-main.cpp}::Workspace", "df/dd6/classanonymous__namespace_02lsp-main_8cpp_03_1_1Workspace.html", null ],
+    [ "zap_arc_header_t", "d1/de8/structzap__arc__header__t.html", null ],
+    [ "zap_arc_metadata_t", "d4/d2c/structzap__arc__metadata__t.html", null ],
     [ "zap_string_t", "dd/d2a/structzap__string__t.html", null ]
 ];
