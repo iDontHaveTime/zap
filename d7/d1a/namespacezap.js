@@ -4,6 +4,8 @@ var namespacezap =
       [ "computeLogicalModulePath", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#aec887b6f2fdb75498785916f4fe3bd13", null ],
       [ "currentExecutablePath", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#a1b46bdefb6c665374ef9f52c428c8df1", null ],
       [ "emitRequestedTextOutputs", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#acfb14e0533098d3b50db6c54a7b5cfb3", null ],
+      [ "hasPreludeImport", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#a1dfe06e90d85cbd45c5741aeacd89198", null ],
+      [ "injectImplicitPreludeImportIfNeeded", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#aed22b37ca8ad9a85fb805eb4bb06173b", null ],
       [ "loadModuleGraph", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#a5133a75d670ba094d22e9aefdaef5c29", null ],
       [ "readSourceFile", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#af4bbc238e3e3e6f7f312f70f61694f2a", null ],
       [ "resolveImportTargets", "dc/dca/namespacezap_1_1anonymous__namespace_02driver_8cpp_03.html#a55d5b8a988ea0ec485ebdbda73d289b4", null ],
@@ -33,6 +35,18 @@ var namespacezap =
       [ "tabWidth", "d5/d59/namespacezap_1_1detail.html#a29f591a0552384688b0bef1fa58f5200", null ],
       [ "utf8CodePointLength", "d5/d59/namespacezap_1_1detail.html#abc46d5e2263a7c5fb10d5e23ab9cd55d", null ],
       [ "visualColumnsForBytes", "d5/d59/namespacezap_1_1detail.html#a8b213037ba196e2f908fb2e015e5d08b", null ]
+    ] ],
+    [ "text", "dc/db9/namespacezap_1_1text.html", [
+      [ "StringKind", "dc/db9/namespacezap_1_1text.html#a7f5ed9d038bec933aa297d57e6e1d60b", [
+        [ "NotString", "dc/db9/namespacezap_1_1text.html#a7f5ed9d038bec933aa297d57e6e1d60bad1fbc2ebe859e3a2c278cbadb77b7856", null ],
+        [ "String", "dc/db9/namespacezap_1_1text.html#a7f5ed9d038bec933aa297d57e6e1d60ba27118326006d3829667a400ad23d5d98", null ],
+        [ "StringView", "dc/db9/namespacezap_1_1text.html#a7f5ed9d038bec933aa297d57e6e1d60babe7da51d54c0bc9fe8ed72ba7808f256", null ]
+      ] ],
+      [ "baseTypeName", "dc/db9/namespacezap_1_1text.html#aa6e23d98ca69f8c9e02a99965d4c105e", null ],
+      [ "classifyRecordName", "dc/db9/namespacezap_1_1text.html#a8b0e93937fd8b47a16039c0cf495948a", null ],
+      [ "isStringRecordName", "dc/db9/namespacezap_1_1text.html#ae8184319a065dd047614d53ec0e4244b", null ],
+      [ "isStringType", "dc/db9/namespacezap_1_1text.html#a80463f2bda983207e79303b56cdb4a1c", null ],
+      [ "isStringViewType", "dc/db9/namespacezap_1_1text.html#a6bf1be744786a97565e758687a0faae6", null ]
     ] ],
     [ "ArgConf", "d5/df3/classzap_1_1ArgConf.html", "d5/df3/classzap_1_1ArgConf" ],
     [ "ArgVal", "d4/df7/structzap_1_1ArgVal.html", "d4/df7/structzap_1_1ArgVal" ],
@@ -82,6 +96,7 @@ var namespacezap =
       [ "Warning", "d7/d1a/namespacezap.html#a13ae6a43c2e5be75cc58a93a966b62a2a0eaadb4fcb48a0a0ed7bc9868be9fbaa", null ],
       [ "Error", "d7/d1a/namespacezap.html#a13ae6a43c2e5be75cc58a93a966b62a2a902b0d55fddef6f8d651fe1035b7d4bd", null ]
     ] ],
+    [ "compileAssemblyFromZIR", "d7/d1a/namespacezap.html#acf7f30878e001c3556d5b9c80bb25d8b", null ],
     [ "compileLoadedModules", "d7/d1a/namespacezap.html#a5b534b45b24952eb8d0ee6cbdb4eb199", null ],
     [ "compileObjectFromZIR", "d7/d1a/namespacezap.html#aa45f8059fbd9d638fea35ed88ebb1e31", null ],
     [ "compileSourceLLVMFromZIR", "d7/d1a/namespacezap.html#a59eaa38dc4c00c6b9ffe0e78eec3f3c9", null ],
