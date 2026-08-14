@@ -26,17 +26,21 @@ var NAVTREE =
 [
   [ "ZAP", "index.html", [
     [ "Changelog", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html", [
-      [ "[0.0.1] - 2026-03-16", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md12", [
-        [ "Added", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md13", null ],
-        [ "Changed", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md14", null ],
-        [ "Removed", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md15", null ]
+      [ "[0.1.0] - 2026-07-24", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md5", [
+        [ "Added", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md6", null ],
+        [ "Changed", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md7", null ]
+      ] ],
+      [ "[0.0.1] - 2026-03-16", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md8", [
+        [ "Added", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md9", null ],
+        [ "Changed", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md10", null ],
+        [ "Removed", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md11", null ]
       ] ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ],
+        [ "All", "namespacemembers.html", "namespacemembers_dup" ],
+        [ "Functions", "namespacemembers_func.html", "namespacemembers_func" ],
         [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ]
@@ -59,7 +63,7 @@ var NAVTREE =
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
+        [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
@@ -74,22 +78,29 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d0/df9/classsema_1_1BoundVisitor.html#a1dba80fa0897fb7556de48f745cb8ee9",
-"d2/d02/classzap_1_1SFStream.html#a04d02a7b926afd27407542403cd297f8",
-"d2/df8/classWhileNode.html#a9ad9f06355cc4e6e8708694a530737a9",
-"d3/dc3/classsema_1_1BoundContinueStatement.html#a72a9050e73a1d6c96b2d1512e05ce54f",
-"d4/da0/classzir_1_1BoundIRGenerator.html#a6f4dc9fe3389e2df321acb83917e6912",
-"d6/d99/structanonymous__namespace_02lsp-main_8cpp_03_1_1DocumentState.html",
-"d8/d5e/classAssignNode.html#a897aed991c15c72a36509010a03e7bb3",
-"d9/d0d/classzap_1_1lsp_1_1Server.html#adea03253e1c131a22192cbcca10eefdf",
-"da/d3d/classsema_1_1BoundRootNode.html#a79fd1396e9702ca9c2f71f23c96b1eb9",
-"da/de9/classcodegen_1_1LLVMCodeGen.html#a85c8cc352b8d2eb5dbaf7ef78260afc9",
-"db/dee/classzir_1_1GetElementPtrInst.html",
-"dc/d2c/classsema_1_1Binder.html#a346ab1e3a50d682abac3d2e8150fa94d",
-"dc/d90/classzir_1_1Function.html#ad979e7722e3df26574d89fc273db6d90",
-"de/d32/classStructLiteralNode.html#a13ef5eb5ad1ed7a0af7d8d53b8bc86a7",
-"df/d0a/classzir_1_1BinaryInst.html#a090e35febe9040bfe62985fc0fd40ccb",
-"dir_e1aa690b4af0a0538ec65649b0390051.html"
+"d0/dd5/classsema_1_1BoundFailStatement.html#ace0e948bc80ac8b94045e64950c14942",
+"d1/d76/structzir_1_1EnumType_1_1Variant.html",
+"d2/d2e/unary__expr_8hpp_source.html",
+"d2/dba/classzap_1_1lsp_1_1JsonObject.html#adb6a6687a934d46790c9bfeae27023e0",
+"d3/d31/classzir_1_1WeakAliveInst.html#ad1f9d2ee1f29515fbe39c1acc9a1422c",
+"d3/df8/structzap_1_1lsp_1_1SemanticSnapshot.html#ab4098d57d6f01f7ac2ac8086a87fde6c",
+"d4/d8a/classzir_1_1MoveInst.html#ad80d4c9cea4348d24ae98e2ffe5fe50a",
+"d5/d23/namespacezap_1_1lsp.html#ae016f67d70061ab5aef04f5e6d4c5c6d",
+"d6/d7b/classClassDecl.html#a569fdd188f0f44dc2cd5fb5841b7a5f3",
+"d7/d50/namespacesema_1_1anonymous__namespace_02conversion_8cpp_03.html#a138bd86df29293735fd2de540217e68c",
+"d8/d58/flags_8inc.html",
+"d9/d00/classzap_1_1driver.html#a0958bb807d28a48357f784f362b51735",
+"d9/d68/classzir_1_1Module.html#a6afa2d24339b678b56f5a08adb97288c",
+"da/d53/classBinExpr.html#afcee26d77cbdd25b13b6c473aefc5e9f",
+"da/de9/classcodegen_1_1LLVMCodeGen.html#a7e67d1645fad05514fdeb2b1161e062a",
+"db/db1/classsema_1_1FunctionSymbol.html#a6f4d1e070d40200be3504bc522152863",
+"dc/d13/structVisitor.html#a38542ab4ca9cca89e729938ad3070268",
+"dc/d2c/classsema_1_1Binder.html#aada8cec31b7690f0d9eddc5b7f7280e5",
+"dc/ddd/parser_8cpp_source.html",
+"dd/db4/process_8hpp_source.html",
+"de/d73/classzap_1_1Parser.html#a9309005ceef5d5d2a9be5c7755ed1d99",
+"df/d35/namespacezir.html#a8aff9f37489c6b980b6ff3787f3a6959a61cf8510205077b6f5491d38cd44c0f7",
+"df/ddd/binder__module__predeclare_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

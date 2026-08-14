@@ -72,6 +72,7 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ad532574e72924d2e262bfa194f273547" id="r_ad532574e72924d2e262bfa194f273547"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad532574e72924d2e262bfa194f273547">moduleName</a></td></tr>
 <tr class="memitem:a23750b94548941e6b36a18945a43d89d" id="r_a23750b94548941e6b36a18945a43d89d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23750b94548941e6b36a18945a43d89d">linkPath</a></td></tr>
 <tr class="memitem:a62a03220f671c7a9ce38df10b2d212ce" id="r_a62a03220f671c7a9ce38df10b2d212ce"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62a03220f671c7a9ce38df10b2d212ce">sourceName</a></td></tr>
+<tr class="memitem:ad443992f3e6ec9b15e11dd4d407e9071" id="r_ad443992f3e6ec9b15e11dd4d407e9071"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad443992f3e6ec9b15e11dd4d407e9071">sourceText</a></td></tr>
 <tr class="memitem:a4b770dda88e30535b8a87314ed4cd055" id="r_a4b770dda88e30535b8a87314ed4cd055"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b770dda88e30535b8a87314ed4cd055">isEntry</a> = false</td></tr>
 <tr class="memitem:a0d27c0d6b9922605fab2ae4a0c6c91fd" id="r_a0d27c0d6b9922605fab2ae4a0c6c91fd"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="../../d8/d7a/classRootNode.html">RootNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d27c0d6b9922605fab2ae4a0c6c91fd">root</a></td></tr>
 <tr class="memitem:ad33a6de075f4e930c897edef4b9718fb" id="r_ad33a6de075f4e930c897edef4b9718fb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d9/ddd/structsema_1_1ResolvedImport.html">ResolvedImport</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad33a6de075f4e930c897edef4b9718fb">imports</a></td></tr>
@@ -92,9 +93,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/de6/module__info_8hpp_source.html#l00033">33</a> of file <a class="el" href="../../da/de6/module__info_8hpp_source.html">module_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de6/module__info_8hpp_source.html#l00034">34</a> of file <a class="el" href="../../da/de6/module__info_8hpp_source.html">module_info.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02211">sema::Binder::applyImports()</a>, <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l01902">anonymous_namespace{lsp-main.cpp}::collectImportedSymbols()</a>, <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02322">sema::Binder::ensureModuleValuesReady()</a>, <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l00701">anonymous_namespace{lsp-main.cpp}::findImportedModuleByAlias()</a>, <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l01980">anonymous_namespace{lsp-main.cpp}::resolveDefinition()</a>, <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l01319">anonymous_namespace{lsp-main.cpp}::resolveHover()</a>, and <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l01099">anonymous_namespace{lsp-main.cpp}::resolveSignatures()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00309">sema::Binder::applyImports()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l01108">zap::lsp::collectExportedSymbolsRecursive()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l01160">zap::lsp::collectImportedSymbols()</a>, <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00429">sema::Binder::ensureModuleValuesReady()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l00231">zap::lsp::findImportedModuleByAlias()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l00248">zap::lsp::resolveClassInModule()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l01209">zap::lsp::resolveDefinition()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l00982">zap::lsp::resolveHover()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l00935">zap::lsp::resolveHoverInModuleRecursive()</a>, <a class="el" href="../../d1/d35/completion_8cpp_source.html#l00236">zap::lsp::resolveRecordLikeFieldsInModule()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l00700">zap::lsp::resolveSignatures()</a>, and <a class="el" href="../../db/d80/language__features_8cpp_source.html#l00651">zap::lsp::resolveSignaturesInModuleRecursive()</a>.</p>
 
 </div>
 </div>
@@ -110,9 +111,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/de6/module__info_8hpp_source.html#l00031">31</a> of file <a class="el" href="../../da/de6/module__info_8hpp_source.html">module_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de6/module__info_8hpp_source.html#l00032">32</a> of file <a class="el" href="../../da/de6/module__info_8hpp_source.html">module_info.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02354">sema::Binder::predeclareModuleValues()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00461">sema::Binder::predeclareModuleValues()</a>.</p>
 
 </div>
 </div>
@@ -130,7 +131,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../da/de6/module__info_8hpp_source.html#l00029">29</a> of file <a class="el" href="../../da/de6/module__info_8hpp_source.html">module_info.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00210">zap::anonymous_namespace{driver.cpp}::injectImplicitPreludeImportIfNeeded()</a>, <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02181">sema::Binder::predeclareModuleAliases()</a>, <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02009">sema::Binder::predeclareModuleTypes()</a>, and <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02354">sema::Binder::predeclareModuleValues()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dd/d35/module__loader_8cpp_source.html#l00167">zap::frontend::injectImplicitPreludeImportIfNeeded()</a>, <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00279">sema::Binder::predeclareModuleAliases()</a>, <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00018">sema::Binder::predeclareModuleTypes()</a>, and <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00461">sema::Binder::predeclareModuleValues()</a>.</p>
 
 </div>
 </div>
@@ -148,7 +149,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../da/de6/module__info_8hpp_source.html#l00027">27</a> of file <a class="el" href="../../da/de6/module__info_8hpp_source.html">module_info.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l01902">anonymous_namespace{lsp-main.cpp}::collectImportedSymbols()</a>, <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02181">sema::Binder::predeclareModuleAliases()</a>, <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02009">sema::Binder::predeclareModuleTypes()</a>, and <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02354">sema::Binder::predeclareModuleValues()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00309">sema::Binder::applyImports()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l01160">zap::lsp::collectImportedSymbols()</a>, <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00279">sema::Binder::predeclareModuleAliases()</a>, <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00018">sema::Binder::predeclareModuleTypes()</a>, <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00461">sema::Binder::predeclareModuleValues()</a>, and <a class="el" href="../../db/d80/language__features_8cpp_source.html#l01209">zap::lsp::resolveDefinition()</a>.</p>
 
 </div>
 </div>
@@ -166,7 +167,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../da/de6/module__info_8hpp_source.html#l00028">28</a> of file <a class="el" href="../../da/de6/module__info_8hpp_source.html">module_info.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l01445">anonymous_namespace{lsp-main.cpp}::effectiveImportAlias()</a>, <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02181">sema::Binder::predeclareModuleAliases()</a>, <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02009">sema::Binder::predeclareModuleTypes()</a>, and <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02354">sema::Binder::predeclareModuleValues()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/d80/language__features_8cpp_source.html#l01051">zap::lsp::effectiveImportAlias()</a>, <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00279">sema::Binder::predeclareModuleAliases()</a>, <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00018">sema::Binder::predeclareModuleTypes()</a>, <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00461">sema::Binder::predeclareModuleValues()</a>, and <a class="el" href="../../db/d80/language__features_8cpp_source.html#l01209">zap::lsp::resolveDefinition()</a>.</p>
 
 </div>
 </div>
@@ -182,9 +183,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/de6/module__info_8hpp_source.html#l00032">32</a> of file <a class="el" href="../../da/de6/module__info_8hpp_source.html">module_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de6/module__info_8hpp_source.html#l00033">33</a> of file <a class="el" href="../../da/de6/module__info_8hpp_source.html">module_info.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l01942">anonymous_namespace{lsp-main.cpp}::collectCompletionSymbols()</a>, <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l01486">anonymous_namespace{lsp-main.cpp}::collectTopLevelSymbols()</a>, <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l00683">anonymous_namespace{lsp-main.cpp}::findClassDecl()</a>, <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l01288">anonymous_namespace{lsp-main.cpp}::findTopLevelHover()</a>, <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l00616">anonymous_namespace{lsp-main.cpp}::findTopLevelSignatures()</a>, <a class="el" href="../../d5/d15/driver_8cpp_source.html#l00210">zap::anonymous_namespace{driver.cpp}::injectImplicitPreludeImportIfNeeded()</a>, <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02181">sema::Binder::predeclareModuleAliases()</a>, <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02009">sema::Binder::predeclareModuleTypes()</a>, <a class="el" href="../../dc/de9/binder_8cpp_source.html#l02354">sema::Binder::predeclareModuleValues()</a>, <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l01980">anonymous_namespace{lsp-main.cpp}::resolveDefinition()</a>, and <a class="el" href="../../da/d0c/lsp-main_8cpp_source.html#l00859">anonymous_namespace{lsp-main.cpp}::resolveVariableClassType()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d35/completion_8cpp_source.html#l00307">zap::lsp::collectCompletionSymbols()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l01090">zap::lsp::collectTopLevelSymbols()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l00213">zap::lsp::findClassDecl()</a>, <a class="el" href="../../d1/d35/completion_8cpp_source.html#l00203">zap::lsp::findRecordLikeFields()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l00915">zap::lsp::findTopLevelHover()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l00159">zap::lsp::findTopLevelSignatures()</a>, <a class="el" href="../../dd/d35/module__loader_8cpp_source.html#l00167">zap::frontend::injectImplicitPreludeImportIfNeeded()</a>, <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00279">sema::Binder::predeclareModuleAliases()</a>, <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00018">sema::Binder::predeclareModuleTypes()</a>, <a class="el" href="../../df/ddd/binder__module__predeclare_8cpp_source.html#l00461">sema::Binder::predeclareModuleValues()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l01209">zap::lsp::resolveDefinition()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l00982">zap::lsp::resolveHover()</a>, <a class="el" href="../../db/d80/language__features_8cpp_source.html#l00401">zap::lsp::resolveVariableClassType()</a>, and <a class="el" href="../../db/d80/language__features_8cpp_source.html#l00423">zap::lsp::resolveVariableRecordType()</a>.</p>
 
 </div>
 </div>
@@ -201,6 +202,22 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../da/de6/module__info_8hpp_source.html#l00030">30</a> of file <a class="el" href="../../da/de6/module__info_8hpp_source.html">module_info.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad443992f3e6ec9b15e11dd4d407e9071" name="ad443992f3e6ec9b15e11dd4d407e9071"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad443992f3e6ec9b15e11dd4d407e9071">&#9670;&#160;</a></span>sourceText</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sema::ModuleInfo::sourceText</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../da/de6/module__info_8hpp_source.html#l00031">31</a> of file <a class="el" href="../../da/de6/module__info_8hpp_source.html">module_info.hpp</a>.</p>
 
 </div>
 </div>

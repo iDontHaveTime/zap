@@ -9,8 +9,10 @@ var instruction_8hpp =
     [ "zir::CondBranchInst", "d2/ddf/classzir_1_1CondBranchInst.html", "d2/ddf/classzir_1_1CondBranchInst" ],
     [ "zir::CallInst", "df/d31/classzir_1_1CallInst.html", "df/d31/classzir_1_1CallInst" ],
     [ "zir::ReturnInst", "d2/df1/classzir_1_1ReturnInst.html", "d2/df1/classzir_1_1ReturnInst" ],
-    [ "zir::RetainInst", "da/db6/classzir_1_1RetainInst.html", "da/db6/classzir_1_1RetainInst" ],
-    [ "zir::ReleaseInst", "d0/db2/classzir_1_1ReleaseInst.html", "d0/db2/classzir_1_1ReleaseInst" ],
+    [ "zir::CopyInst", "d3/da5/classzir_1_1CopyInst.html", "d3/da5/classzir_1_1CopyInst" ],
+    [ "zir::MoveInst", "d4/d8a/classzir_1_1MoveInst.html", "d4/d8a/classzir_1_1MoveInst" ],
+    [ "zir::BorrowInst", "d6/d69/classzir_1_1BorrowInst.html", "d6/d69/classzir_1_1BorrowInst" ],
+    [ "zir::DestroyInst", "d3/d6b/classzir_1_1DestroyInst.html", "d3/d6b/classzir_1_1DestroyInst" ],
     [ "zir::AllocInst", "d1/dc3/classzir_1_1AllocInst.html", "d1/dc3/classzir_1_1AllocInst" ],
     [ "zir::CmpInst", "d1/d56/classzir_1_1CmpInst.html", "d1/d56/classzir_1_1CmpInst" ],
     [ "zir::GetElementPtrInst", "db/dee/classzir_1_1GetElementPtrInst.html", "db/dee/classzir_1_1GetElementPtrInst" ],
@@ -18,6 +20,8 @@ var instruction_8hpp =
     [ "zir::CastInst", "d8/d42/classzir_1_1CastInst.html", "d8/d42/classzir_1_1CastInst" ],
     [ "zir::WeakLockInst", "d0/d7a/classzir_1_1WeakLockInst.html", "d0/d7a/classzir_1_1WeakLockInst" ],
     [ "zir::WeakAliveInst", "d3/d31/classzir_1_1WeakAliveInst.html", "d3/d31/classzir_1_1WeakAliveInst" ],
+    [ "zir::AsmOperand", "d6/d55/structzir_1_1AsmOperand.html", "d6/d55/structzir_1_1AsmOperand" ],
+    [ "zir::InlineAsmInst", "da/d3e/classzir_1_1InlineAsmInst.html", "da/d3e/classzir_1_1InlineAsmInst" ],
     [ "zir::OpCode", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847a", [
       [ "zir::OpCode::Alloca", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aadb253826d18dad4c6bf8baedd448cd17", null ],
       [ "zir::OpCode::Load", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aaf19dbf2edb3a0bd74b0524d960ff21eb", null ],
@@ -40,13 +44,22 @@ var instruction_8hpp =
       [ "zir::OpCode::CondBr", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aaa7438498b20c25b5e98e14b77e864ced", null ],
       [ "zir::OpCode::Ret", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aaa4228a09dd66155de8e93a39245768bd", null ],
       [ "zir::OpCode::Call", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aac3755e61202abd74da5885d2e9c9160e", null ],
-      [ "zir::OpCode::Retain", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aaafece4245269582cb2f1009d4fb52047", null ],
-      [ "zir::OpCode::Release", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aab8e7b465df7c5979dc731d06e84ce2cf", null ],
+      [ "zir::OpCode::Copy", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aa5fb63579fc981698f97d55bfecb213ea", null ],
+      [ "zir::OpCode::Move", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aa6bc362dbf494c61ea117fe3c71ca48a5", null ],
+      [ "zir::OpCode::Borrow", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aa6aa9a689ad05ca4dde261bc73f5f5475", null ],
+      [ "zir::OpCode::Destroy", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aa0e181f89f47654b86f3beb42f5cc08b8", null ],
       [ "zir::OpCode::Alloc", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aaea571dc00aef155a16d4e7e1861e1682", null ],
       [ "zir::OpCode::GetElementPtr", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aa58b2d3fcee1d34f2fbb772b5f1295c4f", null ],
       [ "zir::OpCode::Phi", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aa5a82bece4586ad7cb17ba739a2db7f67", null ],
       [ "zir::OpCode::Cast", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aa4cd9f3996d60790cd11c04f842ebc43c", null ],
       [ "zir::OpCode::WeakLock", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aac6ac0837d2c489cbc30e0670ff970d47", null ],
-      [ "zir::OpCode::WeakAlive", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aad0a98cdd30a9fb21eee7e12be36a541c", null ]
+      [ "zir::OpCode::WeakAlive", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aad0a98cdd30a9fb21eee7e12be36a541c", null ],
+      [ "zir::OpCode::InlineAsm", "df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aa17ad1a14b4b00de404f75cf67a4e25c4", null ]
+    ] ],
+    [ "zir::StoreMode", "df/d35/namespacezir.html#afc840fdd1961274a656718b2287cac5a", [
+      [ "zir::StoreMode::Assign", "df/d35/namespacezir.html#afc840fdd1961274a656718b2287cac5aa185b7133db22230701a857c059360cc2", null ],
+      [ "zir::StoreMode::Initialize", "df/d35/namespacezir.html#afc840fdd1961274a656718b2287cac5aa223e06f5cb15fc701ea1e686f7934f4f", null ],
+      [ "zir::StoreMode::RawAssign", "df/d35/namespacezir.html#afc840fdd1961274a656718b2287cac5aacde0c8d977d86fb20f950334d5989b9f", null ],
+      [ "zir::StoreMode::RawInitialize", "df/d35/namespacezir.html#afc840fdd1961274a656718b2287cac5aa1c7365eb955426c08f6bdff65c578efd", null ]
     ] ]
 ];
