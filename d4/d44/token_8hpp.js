@@ -10,7 +10,7 @@ var token_8hpp =
       [ "ELSE", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426", null ],
       [ "WHILE", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73", null ],
       [ "FOR", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8", null ],
-      [ "MATCH", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921a1155ee5305ebe5bb9407faa9d395ae93", null ],
+      [ "CASE", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921a9c9b14644e9370719a51b7342bbc9c4d", null ],
       [ "VAR", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863", null ],
       [ "EXTERN", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921af017da8df4e93d9bc75880a4998c1039", null ],
       [ "MODULE", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921a89e95e5d1ee3b8077a76005fb143771c", null ],
@@ -75,6 +75,7 @@ var token_8hpp =
       [ "UNSAFE", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921a6ff4613da261ce44ff1313390d26312a", null ],
       [ "NULL_LITERAL", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921ad09e18e6251f251a86cd6c7942354ec5", null ],
       [ "CLASS", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921a8dabc58c34c5df57f2151d6f233d6c15", null ],
+      [ "INTERFACE", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921a56690e5e62dbaca19fd78dcfe5d78544", null ],
       [ "PROT", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921a4965c5a2738945d912c8afcbfe435ad1", null ],
       [ "NEW", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921aec34b0b90541576a22697631105dc847", null ],
       [ "WEAK", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921afe4722ca9de2cfd88591a69de2430c0a", null ],
@@ -96,7 +97,8 @@ var token_8hpp =
       [ "DECREMENT", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921acd27a3a13d233019cec19a2423d65a84", null ],
       [ "ASM", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921a3183e1d9ee10bc541acdbf4d55cf9ecf", null ],
       [ "LET", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921afb72619a5a922e816967c4aa49301754", null ],
-      [ "DOTDOT", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaf40bb46e66376286beeb28ad11c9c95", null ]
+      [ "DOTDOT", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaf40bb46e66376286beeb28ad11c9c95", null ],
+      [ "DEFER", "d4/d44/token_8hpp.html#aa520fbf142ba1e7e659590c07da31921ac1ee57b00ef59eca4eb55b5c0e404d2a", null ]
     ] ],
     [ "tokenTypeToString", "d4/d44/token_8hpp.html#adcf4232d1b543f396684ab4b9d3d4bc5", null ]
 ];
