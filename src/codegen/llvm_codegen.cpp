@@ -352,7 +352,9 @@ void LLVMCodeGen::printIR(llvm::raw_ostream &os) const {
 
 bool LLVMCodeGen::verifyModule(llvm::raw_ostream &diagnostics) const {
   if (!module_) {
-    diagnostics << "zapc: internal error: LLVM module was not generated\n";
+    diagnostics << "zapc: internal error: LLVM module was not generated\n"
+                << "Please submit this as a bug report to: "
+                   "https://github.com/thezaplang/zap/issues\n";
     return false;
   }
 
@@ -363,7 +365,9 @@ bool LLVMCodeGen::verifyModule(llvm::raw_ostream &diagnostics) const {
   }
   verifierStream.flush();
 
-  diagnostics << "zapc: internal error: LLVM module verification failed\n";
+  diagnostics << "zapc: internal error: LLVM module verification failed\n"
+              << "Please submit this as a bug report to: "
+                 "https://github.com/thezaplang/zap/issues\n";
   diagnostics << verifierOutput;
   return false;
 }
