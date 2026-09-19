@@ -25,7 +25,7 @@ static const std::unordered_map<std::string, TokenType> KEYWORDS = {
     {"pub", TokenType::PUB},
     {"priv", TokenType::PRIV},
     {"record", TokenType::RECORD},
-    {"impl", TokenType::IMPL},
+    {"extend", TokenType::EXTEND},
     {"static", TokenType::STATIC},
     {"enum", TokenType::ENUM},
     {"struct", TokenType::STRUCT},
@@ -493,7 +493,9 @@ std::vector<Token> Lexer::tokenize(const std::string &input) {
         ++_pos;
         ++_column;
       }
-      if (!isAtEnd() && _input[_pos] == '.' && Peek2() != '.') {
+      if (!isAtEnd() && _input[_pos] == '.' && Peek2() != '.' &&
+          !std::isalpha(static_cast<unsigned char>(Peek2())) &&
+          Peek2() != '_') {
         isFloat = true;
         numStr += _input[_pos++];
         ++_column;

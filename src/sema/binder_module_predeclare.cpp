@@ -15,6 +15,209 @@
 
 namespace sema {
 
+namespace {
+
+// `ref self` changes how a receiver is passed, but is not an overload
+// discriminator at a member call site.  Keep extension declarations that
+// differ only in receiver mode from creating an ambiguous call.
+bool sameExtensionCallSignature(const FunctionSymbol &lhs,
+                                const FunctionSymbol &rhs) {
+  if (lhs.parameters.empty() || rhs.parameters.empty() ||
+      lhs.parameters.size() != rhs.parameters.size() ||
+      lhs.isCVariadic != rhs.isCVariadic) {
+    return false;
+  }
+
+  for (size_t i = 1; i < lhs.parameters.size(); ++i) {
+    const auto &left = lhs.parameters[i];
+    const auto &right = rhs.parameters[i];
+    if (left->is_ref != right->is_ref ||
+        left->is_variadic_pack != right->is_variadic_pack || !left->type ||
+        !right->type || !zir::sameType(left->type, right->type)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+bool sameExtensionTypePattern(
+    const std::shared_ptr<zir::Type> &lhs,
+    const std::shared_ptr<zir::Type> &rhs,
+    std::unordered_map<std::string, std::string> &left_to_right,
+    std::unordered_map<std::string, std::string> &right_to_left) {
+  if (!lhs || !rhs) {
+    return false;
+  }
+  if (lhs->getKind() == zir::TypeKind::Record) {
+    const auto left_record = std::static_pointer_cast<zir::RecordType>(lhs);
+    if (left_record->getRole() == zir::RecordRole::GenericParameter) {
+      if (rhs->getKind() != zir::TypeKind::Record) {
+        return false;
+      }
+      const auto right_record = std::static_pointer_cast<zir::RecordType>(rhs);
+      if (right_record->getRole() != zir::RecordRole::GenericParameter) {
+        return false;
+      }
+      const auto left_it = left_to_right.find(left_record->getName());
+      const auto right_it = right_to_left.find(right_record->getName());
+      if ((left_it != left_to_right.end() &&
+           left_it->second != right_record->getName()) ||
+          (right_it != right_to_left.end() &&
+           right_it->second != left_record->getName())) {
+        return false;
+      }
+      left_to_right[left_record->getName()] = right_record->getName();
+      right_to_left[right_record->getName()] = left_record->getName();
+      return true;
+    }
+    if (left_record->isGenericInstance() &&
+        rhs->getKind() == zir::TypeKind::Record) {
+      const auto right_record = std::static_pointer_cast<zir::RecordType>(rhs);
+      if (!right_record->isGenericInstance() ||
+          left_record->getGenericBaseName() !=
+              right_record->getGenericBaseName() ||
+          left_record->getGenericArguments().size() !=
+              right_record->getGenericArguments().size()) {
+        return false;
+      }
+      for (size_t i = 0; i < left_record->getGenericArguments().size(); ++i) {
+        if (!sameExtensionTypePattern(left_record->getGenericArguments()[i],
+                                      right_record->getGenericArguments()[i],
+                                      left_to_right, right_to_left)) {
+          return false;
+        }
+      }
+      return true;
+    }
+    if (isVariadicViewType(lhs) && isVariadicViewType(rhs)) {
+      const auto right_record = std::static_pointer_cast<zir::RecordType>(rhs);
+      const auto &left_fields = left_record->getFields();
+      const auto &right_fields = right_record->getFields();
+      if (left_fields.empty() || right_fields.empty() ||
+          left_fields.front().type->getKind() != zir::TypeKind::Pointer ||
+          right_fields.front().type->getKind() != zir::TypeKind::Pointer) {
+        return false;
+      }
+      return sameExtensionTypePattern(
+          std::static_pointer_cast<zir::PointerType>(left_fields.front().type)
+              ->getBaseType(),
+          std::static_pointer_cast<zir::PointerType>(right_fields.front().type)
+              ->getBaseType(),
+          left_to_right, right_to_left);
+    }
+  }
+  if (lhs->getKind() == zir::TypeKind::Class &&
+      rhs->getKind() == zir::TypeKind::Class) {
+    const auto left_class = std::static_pointer_cast<zir::ClassType>(lhs);
+    const auto right_class = std::static_pointer_cast<zir::ClassType>(rhs);
+    if (left_class->isGenericInstance() && right_class->isGenericInstance()) {
+      if (left_class->getGenericBaseName() !=
+              right_class->getGenericBaseName() ||
+          left_class->getGenericArguments().size() !=
+              right_class->getGenericArguments().size()) {
+        return false;
+      }
+      for (size_t i = 0; i < left_class->getGenericArguments().size(); ++i) {
+        if (!sameExtensionTypePattern(left_class->getGenericArguments()[i],
+                                      right_class->getGenericArguments()[i],
+                                      left_to_right, right_to_left)) {
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+  if (lhs->getKind() == zir::TypeKind::Pointer &&
+      rhs->getKind() == zir::TypeKind::Pointer) {
+    return sameExtensionTypePattern(
+        std::static_pointer_cast<zir::PointerType>(lhs)->getBaseType(),
+        std::static_pointer_cast<zir::PointerType>(rhs)->getBaseType(),
+        left_to_right, right_to_left);
+  }
+  if (lhs->getKind() == zir::TypeKind::Array &&
+      rhs->getKind() == zir::TypeKind::Array) {
+    const auto left_array = std::static_pointer_cast<zir::ArrayType>(lhs);
+    const auto right_array = std::static_pointer_cast<zir::ArrayType>(rhs);
+    return left_array->getSize() == right_array->getSize() &&
+           sameExtensionTypePattern(left_array->getBaseType(),
+                                    right_array->getBaseType(), left_to_right,
+                                    right_to_left);
+  }
+  return zir::sameType(lhs, rhs);
+}
+
+bool sameGenericExtensionSignature(const FunctionSymbol &lhs,
+                                   const FunctionSymbol &rhs) {
+  if (lhs.parameters.size() != rhs.parameters.size() ||
+      lhs.isCVariadic != rhs.isCVariadic) {
+    return false;
+  }
+  std::unordered_map<std::string, std::string> left_to_right;
+  std::unordered_map<std::string, std::string> right_to_left;
+  for (size_t i = 0; i < lhs.parameters.size(); ++i) {
+    const auto &left = lhs.parameters[i];
+    const auto &right = rhs.parameters[i];
+    if (left->is_ref != right->is_ref ||
+        left->is_variadic_pack != right->is_variadic_pack ||
+        !sameExtensionTypePattern(left->type, right->type, left_to_right,
+                                  right_to_left)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+bool containsGenericParameter(const std::shared_ptr<zir::Type> &type,
+                              std::string_view name) {
+  if (!type) {
+    return false;
+  }
+  if (type->getKind() == zir::TypeKind::Record) {
+    const auto record = std::static_pointer_cast<zir::RecordType>(type);
+    if (record->getRole() == zir::RecordRole::GenericParameter) {
+      return record->getName() == name;
+    }
+    if (record->isGenericInstance()) {
+      for (const auto &argument : record->getGenericArguments()) {
+        if (containsGenericParameter(argument, name)) {
+          return true;
+        }
+      }
+    }
+    if (isVariadicViewType(type)) {
+      const auto &fields = record->getFields();
+      if (!fields.empty() && fields.front().type &&
+          fields.front().type->getKind() == zir::TypeKind::Pointer) {
+        return containsGenericParameter(
+            std::static_pointer_cast<zir::PointerType>(fields.front().type)
+                ->getBaseType(),
+            name);
+      }
+    }
+    return false;
+  }
+  if (type->getKind() == zir::TypeKind::Class) {
+    const auto classType = std::static_pointer_cast<zir::ClassType>(type);
+    for (const auto &argument : classType->getGenericArguments()) {
+      if (containsGenericParameter(argument, name)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  if (type->getKind() == zir::TypeKind::Pointer) {
+    return containsGenericParameter(
+        std::static_pointer_cast<zir::PointerType>(type)->getBaseType(), name);
+  }
+  if (type->getKind() == zir::TypeKind::Array) {
+    return containsGenericParameter(
+        std::static_pointer_cast<zir::ArrayType>(type)->getBaseType(), name);
+  }
+  return false;
+}
+
+} // namespace
+
 void Binder::predeclareModuleTypes(ModuleState &module) {
   currentModuleId_ = module.info->moduleId;
   currentScope_ = module.scope;
@@ -102,7 +305,8 @@ void Binder::predeclareModuleTypes(ModuleState &module) {
         info.ownerQualifiedName = type->getName();
         classInfos_[type->getCodegenName()] = info;
       }
-    } else if (auto interfaceDecl = dynamic_cast<InterfaceDecl *>(child.get())) {
+    } else if (auto interfaceDecl =
+                   dynamic_cast<InterfaceDecl *>(child.get())) {
       auto type = std::make_shared<zir::ClassType>(
           displayTypeName(module.info->moduleName, interfaceDecl->name_),
           mangleName(module.info->linkPath.empty() ? module.info->moduleId
@@ -850,7 +1054,8 @@ void Binder::predeclareModuleValues(ModuleState &module) {
 
       bindInterfaceConformances(*classDecl, classType, classInfo,
                                 classInterfaces);
-    } else if (auto interfaceDecl = dynamic_cast<InterfaceDecl *>(child.get())) {
+    } else if (auto interfaceDecl =
+                   dynamic_cast<InterfaceDecl *>(child.get())) {
       auto interfaceSymbol = std::dynamic_pointer_cast<TypeSymbol>(
           module.scope->lookup(interfaceDecl->name_));
       if (!interfaceSymbol || !interfaceSymbol->isInterface) {
@@ -896,11 +1101,11 @@ void Binder::predeclareModuleValues(ModuleState &module) {
             module.info->moduleName, Visibility::Public);
         symbol->isMethod = true;
         symbol->ownerTypeCodegenName = interfaceType->getCodegenName();
-        symbol->linkName = mangleName(
-            module.info->linkPath.empty() ? module.info->moduleId
-                                          : module.info->linkPath,
-            interfaceDecl->name_ + "$" + methodDecl->name_ + "$" +
-                functionSignatureKey(*symbol));
+        symbol->linkName =
+            mangleName(module.info->linkPath.empty() ? module.info->moduleId
+                                                     : module.info->linkPath,
+                       interfaceDecl->name_ + "$" + methodDecl->name_ + "$" +
+                           functionSignatureKey(*symbol));
 
         if (interfaceInfo.methods.count(symbol->name)) {
           error(methodDecl->span, "Interface method '" + methodDecl->name_ +
@@ -1022,6 +1227,313 @@ void Binder::predeclareModuleValues(ModuleState &module) {
         } else {
           exportSet->addOverload(symbol);
         }
+      }
+    } else if (auto extensionDecl =
+                   dynamic_cast<ExtensionDecl *>(child.get())) {
+      if (!extensionDecl->targetType_) {
+        error(extensionDecl->span,
+              "Extension declaration requires a target type.");
+        continue;
+      }
+      if (extensionDecl->targetType_->isReference ||
+          extensionDecl->targetType_->isVarArgs ||
+          extensionDecl->targetType_->isWeak ||
+          extensionDecl->targetType_->isFailable ||
+          extensionDecl->targetType_->isFunPtr) {
+        error(extensionDecl->targetType_->span,
+              "This extension target form is not supported yet.");
+        continue;
+      }
+
+      std::unordered_map<std::string, std::shared_ptr<zir::Type>>
+          genericBindings;
+      bool validGenericParameters = true;
+      for (const auto &genericParam : extensionDecl->genericParams_) {
+        if (!genericParam) {
+          continue;
+        }
+        const auto [_, inserted] = genericBindings.emplace(
+            genericParam->typeName,
+            zir::makeGenericParameterType(genericParam->typeName));
+        if (!inserted) {
+          error(genericParam->span, "Duplicate generic parameter '" +
+                                        genericParam->typeName +
+                                        "' in extension declaration.");
+          validGenericParameters = false;
+        }
+      }
+      if (!validGenericParameters) {
+        continue;
+      }
+      if (!genericBindings.empty()) {
+        activeGenericBindingsStack_.push_back(genericBindings);
+      }
+
+      auto targetType = mapType(*extensionDecl->targetType_);
+      if (!targetType) {
+        error(extensionDecl->targetType_->span,
+              "Unknown extension target type '" +
+                  extensionDecl->targetType_->qualifiedName() + "'.");
+        if (!genericBindings.empty()) {
+          activeGenericBindingsStack_.pop_back();
+        }
+        continue;
+      }
+      const auto isBareGenericTarget = [&]() {
+        if (targetType->getKind() != zir::TypeKind::Record) {
+          return false;
+        }
+        const auto targetRecord =
+            std::static_pointer_cast<zir::RecordType>(targetType);
+        return targetRecord->getRole() == zir::RecordRole::GenericParameter;
+      };
+      if (isBareGenericTarget()) {
+        error(extensionDecl->targetType_->span,
+              "Blanket extensions must be anchored in a concrete type "
+              "constructor.");
+        if (!genericBindings.empty()) {
+          activeGenericBindingsStack_.pop_back();
+        }
+        continue;
+      }
+      bool hasUnboundGenericParameter = false;
+      for (const auto &[name, _] : genericBindings) {
+        if (!containsGenericParameter(targetType, name)) {
+          error(extensionDecl->targetType_->span,
+                "Generic extension parameter '" + name +
+                    "' must appear in its target type.");
+          hasUnboundGenericParameter = true;
+        }
+      }
+      if (hasUnboundGenericParameter) {
+        activeGenericBindingsStack_.pop_back();
+        continue;
+      }
+      if (targetType->getKind() == zir::TypeKind::Void) {
+        error(extensionDecl->targetType_->span,
+              "Cannot declare an extension for Void.");
+        if (!genericBindings.empty()) {
+          activeGenericBindingsStack_.pop_back();
+        }
+        continue;
+      }
+      if (targetType->getKind() == zir::TypeKind::Class &&
+          std::static_pointer_cast<zir::ClassType>(targetType)->isInterface()) {
+        error(extensionDecl->targetType_->span,
+              "Interfaces cannot be extended yet.");
+        if (!genericBindings.empty()) {
+          activeGenericBindingsStack_.pop_back();
+        }
+        continue;
+      }
+
+      for (const auto &methodDecl : extensionDecl->methods_) {
+        if (!methodDecl) {
+          continue;
+        }
+        if (methodDecl->isStatic_) {
+          error(methodDecl->span,
+                "Static extension methods are not supported yet.");
+          continue;
+        }
+        const bool receiverIsRef =
+            methodDecl->extensionReceiverMode_ == ExtensionReceiverMode::Ref;
+        if (receiverIsRef && targetType->getKind() == zir::TypeKind::Record &&
+            std::static_pointer_cast<zir::RecordType>(targetType)
+                ->hasImmutableFields()) {
+          error(methodDecl->extensionReceiverSpan_,
+                "'ref self' cannot be used with an immutable record target.");
+          continue;
+        }
+        if (!methodDecl->genericParams_.empty()) {
+          error(methodDecl->span,
+                "Generic extension methods are not supported yet.");
+          continue;
+        }
+        if (methodDecl->name_ == "init" || methodDecl->name_ == "deinit") {
+          error(methodDecl->span, "Extension methods cannot declare '" +
+                                      methodDecl->name_ + "'.");
+          continue;
+        }
+
+        std::vector<std::shared_ptr<VariableSymbol>> params;
+        params.push_back(std::make_shared<VariableSymbol>(
+            "self", targetType, BindingKind::Mutable, receiverIsRef, "self",
+            module.info->moduleName, Visibility::Private));
+        bool valid = true;
+        for (size_t i = 0; i < methodDecl->params_.size(); ++i) {
+          const auto &parameterDecl = methodDecl->params_[i];
+          if (parameterDecl->isRef && parameterDecl->isSink) {
+            error(parameterDecl->span,
+                  "Parameter cannot be passed by both 'ref' and 'sink'.");
+            valid = false;
+          }
+          if (parameterDecl->isSink && parameterDecl->isNoEscape) {
+            error(parameterDecl->span,
+                  "A 'sink' parameter cannot have a 'noescape' contract.");
+            valid = false;
+          }
+          if (parameterDecl->isVariadic &&
+              i + 1 != methodDecl->params_.size()) {
+            error(parameterDecl->span,
+                  "Variadic parameter must be the last parameter.");
+            valid = false;
+          }
+          if (parameterDecl->isVariadic && parameterDecl->isRef) {
+            error(parameterDecl->span,
+                  "Variadic parameter cannot be passed by 'ref'.");
+            valid = false;
+          }
+          if (parameterDecl->isVariadic && parameterDecl->isSink) {
+            error(parameterDecl->span,
+                  "Variadic parameter cannot be passed by 'sink'.");
+            valid = false;
+          }
+          if (parameterDecl->isVariadic && parameterDecl->isNoEscape) {
+            error(parameterDecl->span,
+                  "Variadic parameter cannot have a 'noescape' contract.");
+            valid = false;
+          }
+
+          auto parameterType = mapType(*parameterDecl->type);
+          if (!parameterType) {
+            error(parameterDecl->span,
+                  "Unknown type: " + parameterDecl->type->qualifiedName());
+            valid = false;
+            parameterType =
+                std::make_shared<zir::PrimitiveType>(zir::TypeKind::Void);
+          }
+          if (parameterDecl->isNoEscape &&
+              (parameterDecl->isRef ||
+               parameterType->getIntrinsicKind() !=
+                   zir::IntrinsicTypeKind::StringView)) {
+            error(parameterDecl->span,
+                  "'noescape' currently requires a by-value StringView "
+                  "parameter.");
+            valid = false;
+          }
+          auto parameter = std::make_shared<VariableSymbol>(
+              parameterDecl->name, parameterType, BindingKind::Mutable,
+              parameterDecl->isRef, parameterDecl->name,
+              module.info->moduleName, Visibility::Private);
+          parameter->is_sink = parameterDecl->isSink;
+          parameter->is_noescape = parameterDecl->isNoEscape;
+          if (parameterDecl->isVariadic) {
+            parameter->is_variadic_pack = true;
+            parameter->variadic_element_type = parameterType;
+            parameter->type = makeVariadicViewType(parameterType);
+          }
+          params.push_back(std::move(parameter));
+        }
+        if (!valid) {
+          continue;
+        }
+
+        auto returnType =
+            methodDecl->returnType_
+                ? mapType(*methodDecl->returnType_)
+                : std::make_shared<zir::PrimitiveType>(zir::TypeKind::Void);
+        if (!returnType) {
+          error(methodDecl->span, "Unknown return type in extension method '" +
+                                      methodDecl->name_ + "'.");
+          continue;
+        }
+
+        auto symbol = std::make_shared<FunctionSymbol>(
+            methodDecl->name_, std::move(params), std::move(returnType), "",
+            module.info->moduleName, methodDecl->visibility_,
+            methodDecl->isUnsafe_);
+        symbol->isExtensionMethod = true;
+        symbol->extensionTargetType = targetType;
+        symbol->extensionDeclaringModuleId = module.info->moduleId;
+        symbol->isEntryModule = module.info->isEntry;
+        symbol->returnsRef = methodDecl->returnsRef_;
+        for (const auto &genericParam : extensionDecl->genericParams_) {
+          if (genericParam) {
+            symbol->genericParameterNames.push_back(genericParam->typeName);
+          }
+        }
+        symbol->resultBorrow = resolveResultBorrowContract(
+            methodDecl->resultBorrowSource_, symbol->parameters,
+            symbol->returnType, symbol->returnsRef, methodDecl->span);
+        validateAndApplyFunctionAttributes(*methodDecl, symbol, false);
+        if (symbol->hasNoMangle ||
+            (symbol->hasExternC && symbol->externAbi == "C")) {
+          symbol->linkName = symbol->name;
+        } else {
+          symbol->linkName = mangleName(
+              module.info->linkPath.empty() ? module.info->moduleId
+                                            : module.info->linkPath,
+              "extend$" + typeInterner_.mangleKey(targetType) + "$" +
+                  methodDecl->name_ + "$" + functionSignatureKey(*symbol));
+        }
+
+        bool duplicateInModule = false;
+        const auto isDuplicate =
+            [&](const std::shared_ptr<FunctionSymbol> &candidate) {
+              if (!candidate || candidate->extensionDeclaringModuleId !=
+                                    module.info->moduleId) {
+                return false;
+              }
+              return genericBindings.empty()
+                         ? sameExtensionCallSignature(*candidate, *symbol)
+                         : sameGenericExtensionSignature(*candidate, *symbol);
+            };
+        if (genericBindings.empty()) {
+          const auto targetKey = typeInterner_.mangleKey(targetType);
+          const auto targetIt = extensionInfos_.find(targetKey);
+          const auto existing = targetIt == extensionInfos_.end()
+                                    ? nullptr
+                                    : [&]() -> std::shared_ptr<Symbol> {
+            const auto methodIt =
+                targetIt->second.methods.find(methodDecl->name_);
+            return methodIt == targetIt->second.methods.end()
+                       ? nullptr
+                       : methodIt->second;
+          }();
+          for (const auto &candidate : collectOverloads(existing)) {
+            if (isDuplicate(candidate)) {
+              duplicateInModule = true;
+              break;
+            }
+          }
+        } else {
+          for (const auto &extensionInfo : genericExtensionInfos_) {
+            const auto methodIt = extensionInfo.methods.find(methodDecl->name_);
+            if (methodIt == extensionInfo.methods.end()) {
+              continue;
+            }
+            for (const auto &candidate : collectOverloads(methodIt->second)) {
+              if (isDuplicate(candidate)) {
+                duplicateInModule = true;
+                break;
+              }
+            }
+            if (duplicateInModule) {
+              break;
+            }
+          }
+        }
+        if (duplicateInModule) {
+          error(methodDecl->span, "Extension method '" + methodDecl->name_ +
+                                      "' is already declared for '" +
+                                      renderTypeForUser(targetType) + "'.");
+          continue;
+        }
+
+        addExtensionMethodOverload(targetType, symbol);
+        declaredFunctionSymbols_[methodDecl.get()] = symbol;
+        functionDeclarationNodes_[symbol.get()] = methodDecl.get();
+        functionDeclarationModuleIds_[symbol.get()] = module.info->moduleId;
+        functionGenericParamNames_[symbol.get()] =
+            symbol->genericParameterNames;
+        extensionDeclarationNodes_[symbol.get()] = extensionDecl;
+        if (semanticInfo_) {
+          semanticInfo_->recordDeclaration(methodDecl.get(), symbol);
+        }
+      }
+      if (!genericBindings.empty()) {
+        activeGenericBindingsStack_.pop_back();
       }
     } else if (auto bindingDecl = dynamic_cast<BindingDecl *>(child.get())) {
       const bool isConstant =

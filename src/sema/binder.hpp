@@ -39,6 +39,7 @@ std::string renderGenericCodegenName(
 std::shared_ptr<zir::RecordType>
 makeVariadicViewType(const std::shared_ptr<zir::Type> &elementType);
 bool isVariadicViewType(const std::shared_ptr<zir::Type> &type);
+bool containsUnresolvedGenericParameter(const std::shared_ptr<zir::Type> &type);
 std::unique_ptr<BoundExpression>
 makeDefaultValueExpr(const std::shared_ptr<zir::Type> &type);
 std::unique_ptr<BoundExpression>
@@ -73,6 +74,7 @@ public:
   void visit(ImportNode &node) override;
   void visit(FunDecl &node) override;
   void visit(ExtDecl &node) override;
+  void visit(ExtensionDecl &node) override;
   void visit(BodyNode &node) override;
   void visit(BindingDecl &node) override;
   void visit(RangeExpr &node) override;
@@ -153,6 +155,7 @@ private:
 
   void pushScope();
   void popScope();
+  bool canPassAsMutableReference(const BoundExpression &expression) const;
   bool requireMutablePlace(const BoundExpression &expression, SourceSpan span,
                            MutablePlaceUse use);
 
@@ -184,6 +187,8 @@ private:
       functionDeclarationModuleIds_;
   std::unordered_map<const FunctionSymbol *, std::vector<std::string>>
       functionGenericParamNames_;
+  std::unordered_map<const FunctionSymbol *, const ExtensionDecl *>
+      extensionDeclarationNodes_;
   std::unordered_map<std::string, std::shared_ptr<FunctionSymbol>>
       genericFunctionInstantiations_;
   std::unordered_map<std::string, std::shared_ptr<TypeSymbol>>
@@ -206,6 +211,13 @@ private:
   };
   std::unordered_map<std::string, ClassInfo> classInfos_;
   std::vector<std::string> currentClassStack_;
+
+  struct ExtensionInfo {
+    std::shared_ptr<zir::Type> targetType;
+    std::map<std::string, std::shared_ptr<Symbol>> methods;
+  };
+  std::unordered_map<std::string, ExtensionInfo> extensionInfos_;
+  std::vector<ExtensionInfo> genericExtensionInfos_;
 
   struct InterfaceInfo {
     std::shared_ptr<TypeSymbol> typeSymbol;
@@ -271,9 +283,34 @@ private:
   std::shared_ptr<FunctionSymbol>
   findFunctionBySignature(const std::shared_ptr<Symbol> &symbol,
                           const FunctionSymbol &prototype) const;
+  struct MemberOverloadResult {
+    enum class Status {
+      NoMatch,
+      Match,
+      Ambiguous,
+    };
+
+    Status status = Status::NoMatch;
+    std::shared_ptr<FunctionSymbol> symbol;
+  };
+  MemberOverloadResult selectMemberOverload(
+      const std::vector<std::shared_ptr<FunctionSymbol>> &candidates,
+      const BoundExpression &receiver,
+      const std::vector<std::unique_ptr<BoundExpression>> &arguments,
+      const std::vector<std::unique_ptr<TypeNode>> &explicitTypeArgs,
+      SourceSpan callSpan, bool calledOnType);
   std::shared_ptr<OverloadSetSymbol>
   addClassMethodOverload(ClassInfo &classInfo,
                          const std::shared_ptr<FunctionSymbol> &method);
+  std::shared_ptr<OverloadSetSymbol>
+  addExtensionMethodOverload(const std::shared_ptr<zir::Type> &targetType,
+                             const std::shared_ptr<FunctionSymbol> &method);
+  std::vector<std::shared_ptr<FunctionSymbol>>
+  collectExtensionMethods(const std::shared_ptr<zir::Type> &targetType,
+                          const std::string &name) const;
+  bool extensionTargetMatches(const std::shared_ptr<zir::Type> &pattern,
+                              const std::shared_ptr<zir::Type> &target) const;
+  bool extensionMethodVisible(const FunctionSymbol &method) const;
   int findOverriddenVtableSlot(const ClassInfo &classInfo,
                                const FunctionSymbol &method) const;
   std::shared_ptr<FunctionSymbol> ensureGenericFunctionInstantiation(

@@ -129,14 +129,20 @@ std::shared_ptr<FunctionSymbol> Binder::ensureGenericFunctionInstantiation(
       baseFunction->moduleName, baseFunction->visibility,
       baseFunction->isUnsafe, baseFunction->isCVariadic);
   instantiated->isMethod = baseFunction->isMethod;
+  instantiated->isExtensionMethod = baseFunction->isExtensionMethod;
   instantiated->isStatic = baseFunction->isStatic;
   instantiated->isConstructor = baseFunction->isConstructor;
   instantiated->isDestructor = baseFunction->isDestructor;
   instantiated->isEntryModule = baseFunction->isEntryModule;
+  instantiated->returnsRef = baseFunction->returnsRef;
   instantiated->hasNoMangle = baseFunction->hasNoMangle;
   instantiated->hasEntry = baseFunction->hasEntry;
   instantiated->vtableSlot = -1;
   instantiated->ownerTypeCodegenName = baseFunction->ownerTypeCodegenName;
+  instantiated->extensionTargetType = substituteGenericType(
+      baseFunction->extensionTargetType, genericBindingMap);
+  instantiated->extensionDeclaringModuleId =
+      baseFunction->extensionDeclaringModuleId;
   instantiated->resultBorrow = baseFunction->resultBorrow;
   instantiated->isGenericInstantiation = true;
   instantiated->genericArguments.clear();
@@ -380,6 +386,9 @@ bool Binder::validateGenericConstraints(
                          constraint.parameterName + "'";
       }
       return false;
+    }
+    if (containsUnresolvedGenericParameter(boundIt->second)) {
+      continue;
     }
     if (!constraint.boundType) {
       continue;

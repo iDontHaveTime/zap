@@ -5,6 +5,95 @@
 
 namespace sema {
 
+Binder::MemberOverloadResult Binder::selectMemberOverload(
+    const std::vector<std::shared_ptr<FunctionSymbol>> &candidates,
+    const BoundExpression &receiver,
+    const std::vector<std::unique_ptr<BoundExpression>> &arguments,
+    const std::vector<std::unique_ptr<TypeNode>> &explicitTypeArgs,
+    SourceSpan callSpan, bool calledOnType) {
+  struct Candidate {
+    std::shared_ptr<FunctionSymbol> symbol;
+    std::vector<int> cost;
+  };
+
+  const auto hasReceiver = [](const FunctionSymbol &function) {
+    return function.isMethod || function.isExtensionMethod;
+  };
+
+  std::vector<Candidate> matches;
+  for (auto function : candidates) {
+    if (!function || (hasReceiver(*function) && calledOnType)) {
+      continue;
+    }
+    const int extensionTargetCost =
+        function->isExtensionMethod && !function->genericParameterNames.empty()
+            ? 1
+            : 0;
+
+    std::vector<std::unique_ptr<BoundExpression>> inferenceArguments;
+    if (hasReceiver(*function)) {
+      inferenceArguments.push_back(receiver.clone());
+    }
+    for (const auto &argument : arguments) {
+      inferenceArguments.push_back(argument->clone());
+    }
+
+    if (!function->genericParameterNames.empty()) {
+      auto genericBindings = buildGenericBindings(
+          *function, inferenceArguments, explicitTypeArgs, callSpan, nullptr);
+      if (genericBindings.empty()) {
+        continue;
+      }
+      function = ensureGenericFunctionInstantiation(
+          function, orderedGenericBindings(genericBindings), callSpan);
+      if (!function) {
+        continue;
+      }
+    } else if (!explicitTypeArgs.empty()) {
+      continue;
+    }
+
+    const size_t parameterOffset = hasReceiver(*function) ? 1 : 0;
+    if (arguments.size() + parameterOffset != function->parameters.size()) {
+      continue;
+    }
+
+    Candidate match;
+    match.symbol = function;
+    // A concrete extension target is more specific than a generic target
+    // pattern such as `*T`. Extension methods currently have no independent
+    // method-level generics, so a generic extension symbol always represents
+    // a target pattern here.
+    match.cost.push_back(extensionTargetCost);
+    bool failed = false;
+    for (size_t i = 0; i < arguments.size(); ++i) {
+      auto conversion = conversions_.classifyImplicit(
+          arguments[i]->type, function->parameters[i + parameterOffset]->type);
+      if (!conversion) {
+        failed = true;
+        break;
+      }
+      match.cost.push_back(conversion->cost());
+    }
+    if (!failed) {
+      matches.push_back(std::move(match));
+    }
+  }
+
+  if (matches.empty()) {
+    return {};
+  }
+
+  std::sort(matches.begin(), matches.end(),
+            [](const Candidate &lhs, const Candidate &rhs) {
+              return lhs.cost < rhs.cost;
+            });
+  if (matches.size() > 1 && matches[0].cost == matches[1].cost) {
+    return {MemberOverloadResult::Status::Ambiguous, nullptr};
+  }
+  return {MemberOverloadResult::Status::Match, matches.front().symbol};
+}
+
 void Binder::visit(FunCall &node) {
   if (bindSizeOfBuiltinCall(node)) {
     return;
@@ -104,47 +193,67 @@ void Binder::visit(FunCall &node) {
       return;
     }
 
-    if (selfExpr->type->getKind() != zir::TypeKind::Class) {
-      // Not a class method call. Fall through to the normal qualified
-      // function/module call resolution path below.
-    } else {
-      auto classType = std::static_pointer_cast<zir::ClassType>(selfExpr->type);
-      if (classType->isWeak()) {
-        error(node.span,
-              "Weak references cannot be used to call methods directly.");
-        return;
-      }
-      std::shared_ptr<Symbol> methodSymbol;
-      if (classType->isInterface()) {
-        auto infoIt = interfaceInfos_.find(classType->getCodegenName());
-        if (infoIt == interfaceInfos_.end()) {
-          error(node.span, "Unknown interface type: " + classType->getName());
+    if (selfExpr->type &&
+        !dynamic_cast<BoundModuleReference *>(selfExpr.get())) {
+      const auto hasReceiver = [](const FunctionSymbol &function) {
+        return function.isMethod || function.isExtensionMethod;
+      };
+      const auto *receiverLiteral =
+          dynamic_cast<BoundLiteral *>(selfExpr.get());
+      const bool calledOnType =
+          receiverLiteral && receiverLiteral->isTypeReference;
+      std::vector<std::shared_ptr<FunctionSymbol>> candidates;
+      std::shared_ptr<zir::ClassType> classType;
+
+      if (selfExpr->type->getKind() == zir::TypeKind::Class) {
+        classType = std::static_pointer_cast<zir::ClassType>(selfExpr->type);
+        if (classType->isWeak()) {
+          error(node.span,
+                "Weak references cannot be used to call methods directly.");
           return;
         }
-        auto methodIt = infoIt->second.methods.find(member->member_);
-        if (methodIt == infoIt->second.methods.end()) {
-          error(node.span, "Interface '" + classType->getName() +
-                               "' has no method '" + member->member_ + "'.");
-          return;
+
+        std::shared_ptr<Symbol> methodSymbol;
+        if (classType->isInterface()) {
+          const auto infoIt = interfaceInfos_.find(classType->getCodegenName());
+          if (infoIt == interfaceInfos_.end()) {
+            error(node.span, "Unknown interface type: " + classType->getName());
+            return;
+          }
+          const auto methodIt = infoIt->second.methods.find(member->member_);
+          if (methodIt != infoIt->second.methods.end()) {
+            methodSymbol = methodIt->second;
+          }
+        } else {
+          const auto infoIt = classInfos_.find(classType->getCodegenName());
+          if (infoIt == classInfos_.end()) {
+            error(node.span, "Unknown class type: " + classType->getName());
+            return;
+          }
+          const auto methodIt = infoIt->second.methods.find(member->member_);
+          if (methodIt != infoIt->second.methods.end()) {
+            methodSymbol = methodIt->second;
+          }
         }
-        methodSymbol = methodIt->second;
+
+        // A declared class/interface member always wins over an extension.
+        // Extensions cannot override or augment a class vtable slot.
+        candidates = methodSymbol ? collectOverloads(methodSymbol)
+                                  : collectExtensionMethods(selfExpr->type,
+                                                            member->member_);
       } else {
-        auto infoIt = classInfos_.find(classType->getCodegenName());
-        if (infoIt == classInfos_.end()) {
-          error(node.span, "Unknown class type: " + classType->getName());
-          return;
-        }
-        auto methodIt = infoIt->second.methods.find(member->member_);
-        if (methodIt == infoIt->second.methods.end()) {
-          error(node.span, "Class '" + classType->getName() +
-                               "' has no method '" + member->member_ + "'.");
-          return;
-        }
-        methodSymbol = methodIt->second;
+        candidates = collectExtensionMethods(selfExpr->type, member->member_);
       }
-      auto candidates = collectOverloads(methodSymbol);
+
       if (candidates.empty()) {
-        error(node.span, "'" + member->member_ + "' is not a method.");
+        if (classType) {
+          error(node.span, "Type '" + classType->getName() +
+                               "' has no method '" + member->member_ + "'.");
+        } else {
+          error(node.span, "Type '" + renderTypeForUser(selfExpr->type) +
+                               "' has no extension method '" + member->member_ +
+                               "'.");
+        }
         return;
       }
 
@@ -164,32 +273,28 @@ void Binder::visit(FunCall &node) {
         rawArgs.push_back(std::move(arg));
       }
 
-      struct MethodCandidate {
-        std::shared_ptr<FunctionSymbol> symbol;
-        std::vector<int> cost;
-      };
-
-      const bool calledOnType =
-          dynamic_cast<BoundLiteral *>(selfExpr.get()) != nullptr;
-      std::vector<MethodCandidate> matches;
+      std::vector<std::shared_ptr<FunctionSymbol>> allowedCandidates;
       bool inaccessibleMatch = false;
       bool unsafeMatch = false;
+      bool immutableReceiverMatch = false;
 
-      for (auto funcSymbol : candidates) {
+      for (const auto &funcSymbol : candidates) {
         if (!funcSymbol) {
           continue;
         }
 
-        if (funcSymbol->isMethod && calledOnType) {
+        if (hasReceiver(*funcSymbol) && calledOnType) {
           continue;
         }
 
-        bool methodAllowed =
-            funcSymbol->visibility == Visibility::Public ||
-            (!currentClassStack_.empty() &&
-             currentClassStack_.back() == classType->getName()) ||
-            (funcSymbol->visibility == Visibility::Protected &&
-             !currentClassStack_.empty());
+        const bool methodAllowed =
+            funcSymbol->isExtensionMethod
+                ? extensionMethodVisible(*funcSymbol)
+                : funcSymbol->visibility == Visibility::Public ||
+                      (!currentClassStack_.empty() && classType &&
+                       currentClassStack_.back() == classType->getName()) ||
+                      (funcSymbol->visibility == Visibility::Protected &&
+                       !currentClassStack_.empty());
         if (!methodAllowed) {
           inaccessibleMatch = true;
           continue;
@@ -198,59 +303,24 @@ void Binder::visit(FunCall &node) {
           unsafeMatch = true;
           continue;
         }
-
-        std::vector<std::unique_ptr<BoundExpression>> inferenceArgs;
-        if (funcSymbol->isMethod) {
-          inferenceArgs.push_back(selfExpr->clone());
-        }
-        for (const auto &rawArg : rawArgs) {
-          inferenceArgs.push_back(rawArg->clone());
-        }
-
-        std::unordered_map<std::string, std::shared_ptr<zir::Type>>
-            genericBindings;
-        if (!funcSymbol->genericParameterNames.empty()) {
-          genericBindings =
-              buildGenericBindings(*funcSymbol, inferenceArgs,
-                                   node.genericArgs_, node.span, nullptr);
-          if (genericBindings.empty()) {
-            continue;
-          }
-          funcSymbol = ensureGenericFunctionInstantiation(
-              funcSymbol, orderedGenericBindings(genericBindings), node.span);
-          if (!funcSymbol) {
-            continue;
-          }
-        } else if (!node.genericArgs_.empty()) {
+        const bool requiresMutableReceiver =
+            funcSymbol->isExtensionMethod && !funcSymbol->parameters.empty() &&
+            funcSymbol->parameters.front()->is_ref;
+        if (requiresMutableReceiver && !canPassAsMutableReference(*selfExpr)) {
+          immutableReceiverMatch = true;
           continue;
         }
-
-        size_t paramOffset = funcSymbol->isMethod ? 1 : 0;
-        if (node.params_.size() + paramOffset !=
-            funcSymbol->parameters.size()) {
-          continue;
-        }
-
-        MethodCandidate match;
-        match.symbol = funcSymbol;
-        bool failed = false;
-        for (size_t i = 0; i < rawArgs.size(); ++i) {
-          auto expectedType = funcSymbol->parameters[i + paramOffset]->type;
-          auto conversion =
-              conversions_.classifyImplicit(rawArgs[i]->type, expectedType);
-          if (!conversion) {
-            failed = true;
-            break;
-          }
-          match.cost.push_back(conversion->cost());
-        }
-        if (!failed) {
-          matches.push_back(std::move(match));
-        }
+        allowedCandidates.push_back(funcSymbol);
       }
 
-      if (matches.empty()) {
-        if (inaccessibleMatch) {
+      auto overload =
+          selectMemberOverload(allowedCandidates, *selfExpr, rawArgs,
+                               node.genericArgs_, node.span, calledOnType);
+      if (overload.status == MemberOverloadResult::Status::NoMatch) {
+        if (immutableReceiverMatch) {
+          requireMutablePlace(*selfExpr, member->left_->span,
+                              MutablePlaceUse::MutableReference);
+        } else if (inaccessibleMatch) {
           error(node.span,
                 "Method '" + member->member_ + "' is not accessible.");
         } else if (unsafeMatch) {
@@ -261,26 +331,24 @@ void Binder::visit(FunCall &node) {
         }
         return;
       }
-
-      std::sort(matches.begin(), matches.end(),
-                [](const MethodCandidate &lhs, const MethodCandidate &rhs) {
-                  return lhs.cost < rhs.cost;
-                });
-      if (matches.size() > 1 && matches[0].cost == matches[1].cost) {
+      if (overload.status == MemberOverloadResult::Status::Ambiguous) {
         error(node.span,
               "Ambiguous overload for method '" + member->member_ + "'.");
         return;
       }
 
-      auto funcSymbol = matches.front().symbol;
+      auto funcSymbol = overload.symbol;
       std::vector<std::unique_ptr<BoundExpression>> args;
       std::vector<bool> argIsRef;
-      if (funcSymbol->isMethod) {
+      if (hasReceiver(*funcSymbol)) {
+        const bool receiverIsRef = funcSymbol->isExtensionMethod &&
+                                   !funcSymbol->parameters.empty() &&
+                                   funcSymbol->parameters.front()->is_ref;
         args.push_back(std::move(selfExpr));
-        argIsRef.push_back(false);
+        argIsRef.push_back(receiverIsRef);
       }
 
-      size_t paramOffset = funcSymbol->isMethod ? 1 : 0;
+      const size_t paramOffset = hasReceiver(*funcSymbol) ? 1 : 0;
       for (size_t i = 0; i < node.params_.size(); ++i) {
         auto arg = rawArgs[i]->clone();
         auto expectedType = funcSymbol->parameters[i + paramOffset]->type;
@@ -716,8 +784,8 @@ void Binder::visit(FunCall &node) {
       if (auto conversion = conversions_.classifyImplicit(
               funcSymbol->returnType, expectedReturnType)) {
         match.returnCost = conversion->cost();
-        match.notes.push_back(
-            "return: " + std::string(conversion->description()));
+        match.notes.push_back("return: " +
+                              std::string(conversion->description()));
       } else {
         match.returnCost = 50;
         match.notes.push_back("return: incompatible with expected " +
