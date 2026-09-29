@@ -25,17 +25,6 @@
 var NAVTREE =
 [
   [ "ZAP", "index.html", [
-    [ "Changelog", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html", [
-      [ "[0.1.0] - 2026-07-24", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md5", [
-        [ "Added", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md6", null ],
-        [ "Changed", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md7", null ]
-      ] ],
-      [ "[0.0.1] - 2026-03-16", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md8", [
-        [ "Added", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md9", null ],
-        [ "Changed", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md10", null ],
-        [ "Removed", "dd/d44/md_src_2lsp_2vscode_2zap_2CHANGELOG.html#autotoc_md11", null ]
-      ] ]
-    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -56,7 +45,6 @@ var NAVTREE =
         [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
-        [ "Enumerator", "functions_eval.html", null ],
         [ "Related Symbols", "functions_rela.html", null ]
       ] ]
     ] ],
@@ -78,31 +66,29 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d0/dad/classzir_1_1Instruction.html#a3681c8ca34e3c301971ad31a2a0a31a7",
-"d1/d3b/classzir_1_1ResultBorrowContract.html#aee441fcb722656d4e279ad5a67cac9cf",
-"d1/ddf/structzap_1_1lsp_1_1OpenDocumentParams.html#a5696e9ea73efcd18f46a18959e80371e",
-"d2/d6f/structzir_1_1ClassType_1_1InterfaceConformance.html#aa4f078e04aa41cbeaf084f866db8879b",
-"d3/d09/classzap_1_1Stream.html#a5990eeaeb8650525c34f319a9da84fe1",
-"d3/d6b/classzir_1_1DestroyInst.html#a4ac19441b0a292107320baf1ed5d956a",
-"d4/d42/namespacezir_1_1anonymous__namespace_02ownership__liveness_8cpp_03.html",
-"d4/da0/classzir_1_1BoundIRGenerator.html#a6f4dc9fe3389e2df321acb83917e6912",
-"d5/d59/namespacezap_1_1detail.html#a5a7229df2b4d21553fa6b3be7a7bfc2c",
-"d6/de1/classzir_1_1ControlFlowGraph.html#a6f5e759d1da298173c9a799c95609384",
-"d7/d6e/classzir_1_1BasicBlock.html#a5bd36183b510f980ef9e6ef69a811bfd",
-"d8/d57/classsema_1_1BoundTryExpression.html#ac0395360f2f669d2e37d2284a977b70b",
-"d9/d00/classzap_1_1driver.html#a02febff63b422cb1fb45df0423d21e7f",
-"d9/d63/classsema_1_1ConstantEvaluator.html#a697374877d664b17c299bcf5d9890b94",
-"da/d3d/classsema_1_1BoundRootNode.html#af74ca9c4f31c2e1e740002b5e174b7cb",
-"da/de1/classzir_1_1RecordType.html#a0bbf365ab48d7faae5a2c06bdba4622c",
-"db/d06/classsema_1_1BoundExpression.html",
-"db/dee/classzir_1_1GetElementPtrInst.html#a67d01a0c2c4aee4e81a0cfa366f1966e",
-"dc/d2c/classsema_1_1Binder.html#a712bc13564972733fafcf0a96a71dd25",
-"dc/d90/classzir_1_1Function.html#a1675983291b60d72f9fdb0c9601a50ed",
-"dd/d4f/structsema_1_1SemanticInfo.html#a17e6033e472c362a3b5e6929c9a8e6d0",
-"de/d3d/namespacezir_1_1anonymous__namespace_02borrow__provenance_8cpp_03.html#ad1d4e146d2eece29acc327f8c51fd67b",
-"de/d85/structzir_1_1OwnershipClosurePlan.html#acba65d356f0fa84230dad6c66d63fc22",
-"df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aa68186db1da877cd7d0d1cad88ac3ab85",
-"df/ddd/namespacezap_1_1frontend.html#a8f2e04610edd7e337c4943fda0c2f9fba45f0fb72a0defdfdb01de4b5a5a6876b"
+"d0/d99/classzir_1_1VerificationResult.html#af522ef5f03b60b76ff330c1daa6a1d77",
+"d1/d45/classsema_1_1BoundBlock.html#a97c7ac364fc391facda4b45160191cc4",
+"d2/d16/structzir_1_1NumericTypeInfo.html#a62c1d7198d38e75ae6e067373aac7046",
+"d2/ddf/classzir_1_1CondBranchInst.html#a517901fe8b573e9590159f8d59a53cb4",
+"d3/d57/classzir_1_1Argument.html#ad5f2e1f50f687197da3a22fa15e2f611",
+"d4/d3c/structzir_1_1FailableTypeLayout.html#a4294d2ea4367dfb4cb7eaad939d7d67e",
+"d4/da0/classzir_1_1BoundIRGenerator.html#a617452582f0d50a325b6568036959f01",
+"d5/df0/namespacezir_1_1anonymous__namespace_02dead__phi__elimination_8cpp_03.html#a50940a83d9dd056be41e47814eca0256",
+"d7/d1a/namespacezap.html#a873ac3ffa9672c2ecc2552347957d68ea344dd8cd533280795b9db82ef0c92749",
+"d7/dbd/classzir_1_1anonymous__namespace_02zir__verifier__function_8cpp_03_1_1FunctionVerifier.html#aeeecbab2f95af5e66a507328c35b64df",
+"d8/da7/arc__layout_8h.html#a89dac34d988b37da03d95b60fa2bef04",
+"d9/d45/structzap_1_1args_1_1CmdlineArgs.html#a7361601fb0ae76e223888022418b058f",
+"da/d2d/classzir_1_1Constant.html#a113a93a02538041812106289ec491971",
+"da/dbd/classzir_1_1anonymous__namespace_02function__reachability_8cpp_03_1_1ReachabilityVisitor.html#ac6d7312c8804e069c617f82ec783bd2b",
+"da/de9/classcodegen_1_1LLVMCodeGen.html#af19a89f80ddb5c6e3b9c5abd342c76e2",
+"db/ddd/classsema_1_1BoundMemberAccess.html#a2502b5a155380e99e6ae4a542ee6667a",
+"dc/d2c/classsema_1_1Binder.html#a4ae59f769e95ea5eae0dbe807d6b1628",
+"dc/d46/classsema_1_1BoundVariableExpression.html#afe4522f259f71d5ebaf8ba2634965693",
+"dd/d4e/classzir_1_1OwnershipLiveness.html#a8c883fdb7680480d688fd90c304a59e8",
+"de/d3d/namespacezir_1_1anonymous__namespace_02borrow__provenance_8cpp_03.html",
+"de/d73/classzap_1_1Parser.html#af64a8234f7c675bb6ecc0239c05d4963",
+"df/d35/namespacezir.html#ab4e12cb1b0618e9ddeb42f32bacb847aa9c46bb7eea63f34b9659973c34a62392",
+"dir_313caf1132e152dd9b58bea13a4052ca.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
